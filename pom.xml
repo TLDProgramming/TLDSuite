@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>TLDCommonLib</module>
+		<module>TLDCommonlib</module>
 		<module>TLDAfk</module>
 		<module>TLDFactions</module>
 		<module>TLDNotes</module>
