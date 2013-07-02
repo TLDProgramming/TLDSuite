@@ -1,0 +1,9 @@
+name: TLDWelcomer
+version: 0.0.1
+description: Welcome messenger
+author: TheLoneDevil
+website: www.justin-wiblin.tk
+main: com.github.thelonedevil.TLDWelcomer.Welcomer
+platform: SERVER
+reload: True
+depends: [TLDcommonlib]

@@ -1,0 +1,44 @@
+Quotes:
+- An-eye-for-an-eye-for-an-eye-for-an-eye ... ends in making everybody blind. ~Mahatma Ghandi
+- We are more often treacherous through weakness than through calculation. ~Francois De La Rochefoucauld
+- The obscure we see eventually. The completely obvious, it seems, takes longer. ~Edward R. Murrow
+- Our greatest pretenses are built up not to hide the evil and the ugly in us, but our emptiness. The hardest thing to hide is something that is not there. ~Eric Hoffer, Passionate State of Mind, 1955
+- When you look into an abyss, the abyss also looks into you. ~Friedrich Nietzche
+- A man with one watch knows what time it is; a man with two watches is never quite sure.  ~Lee Segall
+- Begin at the beginning and go on till you come to the end; then stop.  ~Lewis Carrol, Alice in Wonderland
+- Beware lest you lose the substance by grasping at the shadow.  ~Aesop
+- Even a clock that does not work is right twice a day.  ~Polish Proverb
+- Losing an illusion makes you wiser than finding a truth.  ~Ludwig Börne
+- If a man who cannot count finds a four-leaf clover, is he lucky?  ~Stanislaw J. Lec
+- While his heart still beats, while his flesh still moves, I cannot accept that a being endowed with will-power can give in to despair  ~Jules Verne, Journey to the centre of the Earth
+- Eggs cannot be unscrambled.  ~American Proverb
+- The moment a little boy is concerned with which is a jay and which is a sparrow, he can no longer see the birds or hear them sing.  ~Eric Berne
+- To believe with certainty we must begin with doubting.  ~Stanislaus I of Poland
+- 'You can''t fall off the floor. '
+- Flying is learning how to throw yourself at the ground and miss.  ~Douglas Adams, The Hitch hikers guide to the galaxy
+- Space is big. You just won't believe how vastly, hugely, mind-bogglingly big it is. I mean, you may think it's a long way down the road to the drug store, but that's just peanuts to space.  ~Douglas Adams, The Hitch hikers guide to the galaxy
+- For a moment, nothing happened. Then, after a second or so, nothing continued to happen.  ~Douglas Adams, The Hitch hikers guide to the galaxy
+- One does what one is; one becomes what one does.  ~Robert von Musil, Kleine Prosa
+Rules:
+    '1':
+    - 1. Default rule 1
+    - 2. Default rule 2
+    '2':
+    - 11. Default rule 11
+    - 12. Default rule 22
+    '4':
+    - 31. Default rule 31
+    - 34. Default rule 34 (tee-hee)
+onPlayerJoin:
+    enabled: true
+    rules:
+    - This is the default rules
+    - This is the default rules
+Logins:
+    First: Default first login message
+    Other: Default login message for returning players
+Notes:
+    length: 32
+    amount: 64
+AFK:
+    IdleTime: 5

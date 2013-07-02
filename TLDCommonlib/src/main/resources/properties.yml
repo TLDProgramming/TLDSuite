@@ -1,0 +1,8 @@
+name: TLDcommonlib
+version: 1.3-SNAPSHOT
+description: A common library for my plugins
+author: TheLoneDevil
+website: www.justin-wiblin.tk
+main: com.github.thelonedevil.TLDCommonlib.Lib
+platform: BOTH
+reload: True

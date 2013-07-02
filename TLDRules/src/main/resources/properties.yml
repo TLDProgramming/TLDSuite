@@ -1,0 +1,10 @@
+name: TLDRules
+version: 0.0.1
+description: rules
+author: TheLoneDevil
+website: justin-wiblin.tk
+
+main: com.github.thelonedevil.TLDRules.CleanRules
+depends: [TLDcommonlib]
+load: startup
+platform: Server
