@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.thelonedevil</groupId>
 	<artifactId>TLDReserve</artifactId>
-	<version>1</version>
+	<version>1-SNAPSHOT</version>
 	<name>TLDReserve</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2013</inceptionYear>
@@ -13,6 +13,16 @@
   <artifactId>TLDSuite</artifactId>
   <version>1.0-SNAPSHOT</version>
     </parent>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://192.168.1.76:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>release</id>
+            <url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
 	<organization>
 		<name>yourgroup</name>
 		<url>http://none.right.now.com</url>
