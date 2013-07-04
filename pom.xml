@@ -10,7 +10,7 @@
 
 	<modules>
 		<module>TLDCommonlib</module>
-        <module>TLDAFK</module> 
+        <module>TLDAfk</module> 
 		<module>TLDFactions</module>
 		<module>TLDNotes</module>
 		<module>TLDQuotes</module>
