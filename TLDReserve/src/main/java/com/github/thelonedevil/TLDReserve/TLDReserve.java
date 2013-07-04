@@ -13,12 +13,11 @@ import com.github.thelonedevil.TLDReserve.commands.PlayerCommands;
  */
 public class TLDReserve extends Plugin {
 	private static TLDReserve instance;
-	private Lib lib;
+
 
 	@Override
 	public void onLoad() {
 		setInstance(this);
-		getLogger().info(lib.logged+" loaded.");
 	}
 
 	@Override
@@ -27,12 +26,11 @@ public class TLDReserve extends Plugin {
 		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this));
 
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
-		getLogger().info(lib.logged+" enabled.");
+
 	}
 
 	@Override
 	public void onDisable() {
-		getLogger().info(lib.logged+" disabled.");
 	}
 
 	private static void setInstance(TLDReserve plugin) {

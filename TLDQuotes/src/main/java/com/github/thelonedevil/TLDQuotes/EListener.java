@@ -14,7 +14,6 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  */
 public class EListener implements Listener {
 
-	private Lib lib;
 	private Quoter plugin;
 
 	public EListener(Quoter instance) {
@@ -25,7 +24,7 @@ public class EListener implements Listener {
 	public void onPlayerDeath(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
 		if (player != null) {
-			String quote = lib.Quotes.get(new Random().nextInt(lib.Quotes.size()));
+			String quote = Lib.Quotes.get(new Random().nextInt(Lib.Quotes.size()));
 			player.sendMessage(quote);
 			return;
 		}

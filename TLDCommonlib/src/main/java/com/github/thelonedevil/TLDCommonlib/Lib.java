@@ -23,32 +23,32 @@ import org.spout.api.util.config.Configuration;
 import org.spout.api.util.config.yaml.YamlConfiguration;
 
 public class Lib extends Plugin {
-
 	public final String configPath = "plugins/TLDCommonLib/config.yml";
-	public YamlConfiguration config;
-	public String logged = "Plugin has been ";
-	public String error = "An error has happened...... incoming stack trace....";
-	public List<String> Quotes;
+	public static YamlConfiguration config;
+	public static String logged = "Plugin has been ";
+	public static String error = "An error has happened...... incoming stack trace....";
+	public static List<String> Quotes;
 	public String testQuote;
 	public File libFolder = new File("plugins/TLDCommonLib/");
-	public int reserve;
-	public final Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
-	public final List<String> onJoin = new ArrayList<String>();
-	public String firstlogin;
-	public String otherlogin;
-	public HashMap<String, Integer> logins = new HashMap<String, Integer>();
-	public HashMap<String, Boolean> afk = new HashMap<String, Boolean>();
-	public int Length;
-	public int amount;
-	public HashMap<String, Boolean> Namount = new HashMap<String, Boolean>();
-	public long idletime;
-	public List<String> admins = new ArrayList<String>();
-	public int reserved;
+	public static int reserve;
+	public static final Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
+	public static boolean onjoin = true;
+	public static final List<String> onJoin = new ArrayList<String>();
+	public static String firstlogin;
+	public static String otherlogin;
+	public static HashMap<String, Integer> logins = new HashMap<String, Integer>();
+	public static HashMap<String, Boolean> afk = new HashMap<String, Boolean>();
+	public static int Length;
+	public static int amount;
+	public static HashMap<String, Boolean> Namount = new HashMap<String, Boolean>();
+	public static long idletime;
+	public static List<String> admins = new ArrayList<String>();
+	public static int reserved;
 	private Data data = new Data(this);
 	private DataBase sql = new DataBase(this);
 	public static Statement statement;
 	public static Connection connection;
-	public HashMap<String, String> factions = new HashMap<String, String>();
+	public static HashMap<String, String> factions = new HashMap<String, String>();
 
 	@Override
 	public void onLoad() {
@@ -109,51 +109,30 @@ public class Lib extends Plugin {
 	@Override
 	@UnsafeMethod
 	public void onEnable() {
-		List<Plugin> plugins = getEngine().getPluginManager().getPlugins();
-		List<String> names = new ArrayList<String>();
-		int i = 0;
-		int s = plugins.size();
-		while (i < s) {
-			names.add(plugins.get(i).getName());
-			i++;
-		}
-		if (names.contains("TLDFactions")) {
-			try {
-				File file = new File("plugins/TLDCommonLib/data.sqlite");
-				file.createNewFile();
-				connection = sql.connect("plugins/TLDCommonLib/data.sqlite");
-				statement = sql.state(connection, 30);
-				sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
-				data.factionsdat();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
+		try {
+			File file = new File("plugins/TLDCommonLib/data.sqlite");
+			file.createNewFile();
+			connection = sql.connect("plugins/TLDCommonLib/data.sqlite");
+			statement = sql.state(connection, 30);
+			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
+			data.factionsdat();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
 		}
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
-		if(names.contains("TLDWelcomer")){
-			data.loginMessages();
-		}
-		if(names.contains("TLDNotes")){
-			data.notes();	
-		}
-		if(names.contains("TLDRules")){
-			data.rules();
-		}
-		if(names.contains("TLDAfk")){
-			data.afk();	
-		}
-		if(names.contains("TLDReserve")){
-			data.reserve();	
-		}
-		if(names.contains("TLDQuotes")){
-			data.randomQuote();
-		}
+		data.loginMessages();
+		data.notes();
+		data.rules();
+		data.afk();
+		data.reserve();
+		data.randomQuote();
+
 		getLogger().info(logged + "Enabled!");
 	}
 
@@ -186,7 +165,7 @@ public class Lib extends Plugin {
 		config = new YamlConfiguration(new File(configPath));
 	}
 
-	public Configuration FetchConfig() {
+	public static Configuration FetchConfig() {
 		return config;
 	}
 
@@ -194,7 +173,7 @@ public class Lib extends Plugin {
 		getLogger().info(error);
 	}
 
-	private static Lib instance;
+	public static Lib instance;
 
 	private static void setInstance(Lib plugin) {
 		instance = plugin;

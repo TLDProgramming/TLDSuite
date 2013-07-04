@@ -75,6 +75,7 @@
 						<configuration>
 							<descriptors>
 								<descriptor>src/main/Assembly/zip.xml</descriptor>
+								<descriptor>src/main/Assembly/bin.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

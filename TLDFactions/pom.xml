@@ -98,6 +98,7 @@
 
 	<!-- Builds -->
 	<build>
+	<finalName>TLDFactions</finalName>
 		<defaultGoal>clean install</defaultGoal>
 
 		<!-- Resources to include -->
@@ -148,5 +149,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>1-SNAPSHOT</version>
+	<version>1.3-SNAPSHOT</version>
 </project>

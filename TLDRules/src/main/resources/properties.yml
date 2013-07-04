@@ -1,8 +1,8 @@
-name: TLDRules
-version: 0.0.1
-description: rules
-author: TheLoneDevil
-website: justin-wiblin.tk
+name: ${project.name}
+version: ${project.version} b${buildNumber}
+description: ${project.description}
+author: ${project.organization.name}
+website: ${project.organization.url}
 
 main: com.github.thelonedevil.TLDRules.CleanRules
 depends: [TLDcommonlib]

@@ -19,21 +19,17 @@ public class CleanRules extends Plugin {
 	@Override
 	public void onLoad() {
 		setInstance(this);
-		((PluginLogger) getLogger()).setTag("[TLDRules] ");
-		getLogger().info(lib.logged + "Loaded.");
 	}
 
 	@Override
 	public void onEnable() {
 		// Commands
 		getEngine().getEventManager().registerEvents(new PlayerJoin(this), this);
-		getLogger().info(lib.logged + "enabled.");
 		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this));
 	}
 
 	@Override
 	public void onDisable() {
-		getLogger().info(lib.logged + "disabled.");
 	}
 
 	private static void setInstance(CleanRules plugin) {

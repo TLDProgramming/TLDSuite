@@ -12,13 +12,14 @@ import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.Command;
 import org.spout.api.exception.CommandException;
 
+import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDFactions.TLDFactionsPlugin;
 
 /**
  * Provides an example of a base command.
  */
 public class TLDFactionsBaseCommand {
-	private final TLDFactionsPlugin plugin;
+	private TLDFactionsPlugin plugin;
 
 	public TLDFactionsBaseCommand(TLDFactionsPlugin instance) {
 		this.plugin = instance;

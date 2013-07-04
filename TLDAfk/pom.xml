@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.thelonedevil</groupId>
 	<artifactId>TLDAfk</artifactId>
-	<version>1-SNAPSHOT</version>
+	<version>1.3-SNAPSHOT</version>
 	<name>TLDAfk</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2013</inceptionYear>
 	<description>Set your description</description>
-    <parent>  
-  <groupId>com.github.thelonedevil</groupId>
-  <artifactId>TLDSuite</artifactId>
-  <version>1.0-SNAPSHOT</version>
-    </parent>
-    
+	<parent>
+		<groupId>com.github.thelonedevil</groupId>
+		<artifactId>TLDSuite</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<organization>
 		<name>yourgroup</name>
 		<url>http://none.right.now.com</url>
@@ -26,8 +26,9 @@
 		<spoutVersion>dev-SNAPSHOT</spoutVersion>
 		<buildNumber>0</buildNumber>
 		<mainClass>com.github.thelonedevil.TLDAfk.TLDAfk</mainClass>
-		<!-- add plugin dependancies in the format of Vanilla,Test  -->
-		<!-- Do not add the [] around the dependancies here, that is handled at compile -->
+		<!-- add plugin dependancies in the format of Vanilla,Test -->
+		<!-- Do not add the [] around the dependancies here, that is handled at 
+			compile -->
 		<depends></depends>
 	</properties>
 
@@ -42,11 +43,11 @@
 			</snapshots>
 		</repository>
 		<repository>
-    <id>TLDCommonlib</id>
-    <url>http://nexus.justin-wiblin.tk:8081</url>
-    </repository>
+			<id>TLDCommonlib</id>
+			<url>http://nexus.justin-wiblin.tk:8081</url>
+		</repository>
 	</repositories>
-    
+
 	<dependencies>
 		<!-- Provided by third-party -->
 		<dependency>
@@ -56,23 +57,24 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-    <groupId>com.github.thelonedevil</groupId>
-    <artifactId>TLDCommonlib</artifactId>
-    <version>1.3-SNAPSHOT</version>
-    <scope>provided</scope>
-    </dependency>
+			<groupId>com.github.thelonedevil</groupId>
+			<artifactId>TLDCommonlib</artifactId>
+			<version>1.3-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://192.168.1.76:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>release</id>
-            <url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
-        </repository>
-    </distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://192.168.1.76:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>release</id>
+			<url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
 	<build>
+		<finalName>TLDAfk</finalName>
 		<defaultGoal>clean install</defaultGoal>
 
 		<!-- Resources to include -->

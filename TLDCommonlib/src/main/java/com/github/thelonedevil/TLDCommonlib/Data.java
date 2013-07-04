@@ -16,39 +16,39 @@ public class Data {
 	public Data(Lib instance) {
 		this.plugin = instance;
 	}
-	
+
 	public void loginMessages() {
-		plugin.firstlogin = plugin.config.getNode("Logins.First").getString();
-		plugin.otherlogin = plugin.config.getNode("Logins.Other").getString();
-		loginsdat();	
+		Lib.firstlogin = Lib.config.getNode("Logins.First").getString();
+		Lib.otherlogin = Lib.config.getNode("Logins.Other").getString();
+		loginsdat();
 	}
-	
-	public void rules(){
+
+	public void rules() {
 		ruleCheck();
 		rulesOnJoin();
 	}
-	
-	public void notes(){
-		plugin.Length = plugin.config.getNode("Notes.length").getInt();
-		plugin.amount = plugin.config.getNode("Notes.amount").getInt();
+
+	public void notes() {
+		Lib.Length = Lib.config.getNode("Notes.length").getInt();
+		Lib.amount = Lib.config.getNode("Notes.amount").getInt();
 	}
-	
-	public void afk(){
-		plugin.idletime = plugin.config.getNode("AFK.IdleTime").getInt()*60000;
+
+	public void afk() {
+		Lib.idletime = Lib.config.getNode("AFK.IdleTime").getInt() * 60000;
 	}
-	
-	public void reserve(){
+
+	public void reserve() {
 		reservedat();
-		plugin.reserve = plugin.admins.size();
-		plugin.reserved = ((Server) Lib.getInstance().getEngine()).getMaxPlayers() - (plugin.reserve);
-		
+		Lib.reserve = Lib.admins.size();
+		Lib.reserved = ((Server) Lib.getInstance().getEngine()).getMaxPlayers() - (Lib.reserve);
+
 	}
 
 	public void randomQuote() {
 		try {
-			plugin.Quotes = (plugin.config.getNode("Quotes").getStringList());
-			if (plugin.Quotes != null) {
-				plugin.testQuote = plugin.Quotes.get(new Random().nextInt(plugin.Quotes.size()));
+			Lib.Quotes = (Lib.config.getNode("Quotes").getStringList());
+			if (Lib.Quotes != null) {
+				plugin.testQuote = Lib.Quotes.get(new Random().nextInt(Lib.Quotes.size()));
 				if (plugin.testQuote != null) {
 					plugin.getLogger().info("Quotes loaded");
 				} else
@@ -61,13 +61,13 @@ public class Data {
 	}
 
 	public void ruleCheck() {
-		ConfigurationNode node = plugin.config.getNode("Rules");
+		ConfigurationNode node = Lib.config.getNode("Rules");
 		int i = 1;
 		for (String key : node.getKeys(true)) {
 			ConfigurationNode node1 = node.getChild(key);
 			List<String> list = node1.getStringList();
 			if (list != null) {
-				plugin.rules.put(i, list);
+				Lib.rules.put(i, list);
 				i++;
 			}
 		}
@@ -75,19 +75,19 @@ public class Data {
 	}
 
 	public void rulesOnJoin() {
-		if (plugin.config.getNode("onPlayerJoin.enabled").getBoolean() == true) {
-			ConfigurationNode node = plugin.config.getNode("onPlayerJoin.rules");
-			for (String key : node.getKeys(true)) {
-				ConfigurationNode node1 = node.getChild(key);
-				List<String> list = node1.getStringList();
-				if (list != null) {
-					plugin.onJoin.addAll(list);
-				}
+		if (Lib.config.getNode("onPlayerJoin.enabled").getBoolean() == true) {
+			Lib.onjoin = true;
+			ConfigurationNode node = Lib.config.getNode("onPlayerJoin.rules");
+			List<String> list = node.getStringList();
+			if (list != null) {
+				Lib.onJoin.addAll(list);
 			}
-			plugin.onJoin.add("To see the rest of the rules use /rules 1");
+			Lib.onJoin.add("To see the rest of the rules use /rules 1");
 			plugin.getLogger().info("Player join rules are loaded");
-		} else
+		} else {
+			Lib.onjoin = false;
 			plugin.getLogger().info("Rules displayed on player join has been disabled");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -95,14 +95,14 @@ public class Data {
 		File afkdat = new File("plugins/TLDCommonlib/reserve.dat");
 		if (afkdat.exists()) {
 			try {
-				plugin.admins = (List<String>) SLAPI.load("plugins/TLDCommonlib/reserve.dat");
+				Lib.admins = (List<String>) SLAPI.load("plugins/TLDCommonlib/reserve.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Reserve data has been Loaded from disk");
 			try {
-				SLAPI.save(plugin.admins, "plugins/TLDCommonlib/reserve.dat");
+				SLAPI.save(Lib.admins, "plugins/TLDCommonlib/reserve.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -126,14 +126,14 @@ public class Data {
 		File loginsdat = new File("plugins/TLDCommonlib/logins.dat");
 		if (loginsdat.exists()) {
 			try {
-				plugin.logins = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/logins.dat");
+				Lib.logins = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/logins.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Login data has been Loaded from disk");
 			try {
-				SLAPI.save(plugin.logins, "plugins/TLDCommonlib/logins.dat");
+				SLAPI.save(Lib.logins, "plugins/TLDCommonlib/logins.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -150,20 +150,20 @@ public class Data {
 			plugin.getLogger().info("logins.dat has been created");
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	void factionsdat() {
 		File afkdat = new File("plugins/TLDCommonlib/FactionMottos.dat");
 		if (afkdat.exists()) {
 			try {
-				plugin.factions = (HashMap<String,String>) SLAPI.load("plugins/TLDCommonlib/FactionMottos.dat");
+				Lib.factions = (HashMap<String, String>) SLAPI.load("plugins/TLDCommonlib/FactionMottos.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Faction Motto data has been Loaded from disk");
 			try {
-				SLAPI.save(plugin.factions, "plugins/TLDCommonlib/FactionMottos.dat");
+				SLAPI.save(Lib.factions, "plugins/TLDCommonlib/FactionMottos.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();

@@ -15,12 +15,11 @@ import com.github.thelonedevil.TLDQuotes.Quoter;
 
 public class PlayerCommands {
 
-	private final Quoter plugin;
+	private Quoter plugin;
 
 	public PlayerCommands(Quoter instance) {
 		this.plugin = instance;
 	}
-	private Lib lib;
 
 	final String[] quote1 = new String[1];
 	String quote;
@@ -29,9 +28,9 @@ public class PlayerCommands {
 	@Command(aliases = "Quote", usage = "/Quote", desc = "Displays a random quote from a list", min = 0, max = 2)
 	@Permissible("Quoter.quote")
 	public void Quotes(CommandSource source, CommandArguments args) throws CommandException {
-		int random = new Random().nextInt(lib.Quotes.size());
+		int random = new Random().nextInt(Lib.Quotes.size());
 		if (args.length() == 0) {
-			quote = lib.Quotes.get(random);
+			quote = Lib.Quotes.get(random);
 			quote1[0] = quote;
 			source.sendMessage(quote);
 		} else if (args.length() == 1 && args.getString(0).equalsIgnoreCase("share")) {

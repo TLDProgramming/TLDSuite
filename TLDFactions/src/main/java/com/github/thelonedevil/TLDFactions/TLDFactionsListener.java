@@ -32,7 +32,6 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  */
 public class TLDFactionsListener implements Listener {
 	private TLDFactionsPlugin plugin;
-	private Lib lib;
 
 	public TLDFactionsListener(TLDFactionsPlugin instance) {
 		this.plugin = instance;

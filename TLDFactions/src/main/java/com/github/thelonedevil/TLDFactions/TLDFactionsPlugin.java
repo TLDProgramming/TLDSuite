@@ -21,7 +21,6 @@ public class TLDFactionsPlugin extends Plugin {
 	@Override
 	public void onLoad() {
 		setInstance(this);
-		getLogger().info("loaded.");
 	}
 
 	@Override
@@ -33,13 +32,10 @@ public class TLDFactionsPlugin extends Plugin {
 
 		// Register Events
 		getEngine().getEventManager().registerEvents(new TLDFactionsListener(this), this);
-
-		getLogger().info("enabled.");
 	}
 
 	@Override
 	public void onDisable() {
-		getLogger().info("disabled.");
 	}
 
 	private static void setInstance(TLDFactionsPlugin plugin) {

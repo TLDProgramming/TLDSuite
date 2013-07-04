@@ -12,7 +12,6 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  */
 public class EListener implements Listener {
 	private Welcomer plugin;
-	private Lib lib;
 
 	public EListener(Welcomer instance) {
 		this.plugin = instance;
@@ -24,20 +23,20 @@ public class EListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		name = player.getName();
-		if (lib.logins.get(name) == null) {
-			lib.errorLogger();
-		} else if (lib.logins.get(name) == 1) {
+		if (Lib.logins.get(name) == null) {
+			plugin.getLogger().info(Lib.error);
+		} else if (Lib.logins.get(name) == 1) {
 			player.sendMessage("Welcome, " + name + ".");
-			player.sendMessage(lib.firstlogin);
-		} else if (lib.logins.get(name) == 2) {
+			player.sendMessage(Lib.firstlogin);
+		} else if (Lib.logins.get(name) == 2) {
 			player.sendMessage("Welcome back, " + name + ".");
 			player.sendMessage("You have played once before.");
-			player.sendMessage(lib.otherlogin);
-		} else if (lib.logins.get(name) > 2) {
-			int plays = lib.logins.get(name) - 1;
+			player.sendMessage(Lib.otherlogin);
+		} else if (Lib.logins.get(name) > 2) {
+			int plays = Lib.logins.get(name) - 1;
 			player.sendMessage("Welcome back, " + name + ".");
 			player.sendMessage("You have played " + plays + " times before.");
-			player.sendMessage(lib.otherlogin);
+			player.sendMessage(Lib.otherlogin);
 		}
 	}
 }

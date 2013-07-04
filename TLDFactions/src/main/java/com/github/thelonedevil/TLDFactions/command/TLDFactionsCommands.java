@@ -27,8 +27,8 @@ import com.github.thelonedevil.TLDFactions.TLDFactionsPlugin;
  * Provides an example of a class to hold commands.
  */
 public class TLDFactionsCommands {
-	private final TLDFactionsPlugin plugin;
-	private Lib lib;
+
+	private TLDFactionsPlugin plugin;
 
 	public TLDFactionsCommands(TLDFactionsPlugin instance) {
 		this.plugin = instance;
@@ -37,12 +37,12 @@ public class TLDFactionsCommands {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@Command(aliases = { "create", "found" }, desc = "This is an example of what a command might look like. Try it out with /cmd !", min = 2, max = 2)
+	@Command(aliases = { "create", "found" }, desc = "This is an example of what a command might look like. Try it out with /cmd !", min = 2)
 	@Permissible("TLDFactions.create")
 	public void create(CommandSource source, CommandArguments args) throws CommandException {
 		String name = source.getName();
 		String faction = args.getString(0);
-		String motto = args.getString(1);
+		String motto = args.getJoinedString(1);
 		String query = "select Faction from Factions";
 		List<String> pl = new ArrayList<String>();
 		try {
@@ -57,7 +57,7 @@ public class TLDFactionsCommands {
 			try {
 				String update = "UPDATE Factions SET Faction='" + faction + "', " + "Rank='Founder' WHERE Player='" + name + "' ";
 				Lib.statement.executeUpdate(update);
-				lib.factions.put(faction, motto);
+				Lib.factions.put(faction, motto);
 				source.sendMessage("You have Founded the Faction " + faction + ".");
 			} catch (SQLException e) {
 				e.printStackTrace();

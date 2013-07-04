@@ -16,13 +16,13 @@ public class PlayerJoin implements Listener {
 	public PlayerJoin(CleanRules instance) {
 		this.plugin = instance;
 	}
-	private Lib lib;
+
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		if (player != null && lib.config.getNode("onPlayerJoin.enabled").getBoolean()) {
-			for (String string : lib.onJoin) {
+		if (player != null && Lib.onjoin) {
+			for (String string : Lib.onJoin) {
 				player.sendMessage(string);
 			}
 			return;

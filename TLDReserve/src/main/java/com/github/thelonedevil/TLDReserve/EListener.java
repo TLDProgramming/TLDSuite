@@ -13,12 +13,13 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  * A Basic Event Listener for Spout
  */
 public class EListener implements Listener {
+	
 	private TLDReserve plugin;
 
 	public EListener(TLDReserve instance) {
 		this.plugin = instance;
 	}
-	private Lib lib;
+
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
@@ -26,7 +27,7 @@ public class EListener implements Listener {
 		String name = p.getName();
 		Player[] online = ((Server) plugin.getEngine()).getOnlinePlayers();
 		int w = online.length;
-		if(w == lib.reserved && !lib.admins.contains(name)){
+		if(w == Lib.reserved && !Lib.admins.contains(name)){
 			p.kick();
 		}
 	}

@@ -9,13 +9,14 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDRules.CleanRules;
 
 public class PlayerCommands {
-	private CleanRules plugin;
 
+	private CleanRules plugin;
+	
 	public PlayerCommands(CleanRules instance) {
 		this.plugin = instance;
 	}
 
-	private Lib lib;
+
 
 	@Command(aliases = { "ruleset", "rules" }, desc = "Displays the rules")
 	public void rules(CommandSource source, CommandArguments args) throws CommandException {
@@ -27,7 +28,7 @@ public class PlayerCommands {
 				throw new CommandException(args.getString(0) + " is not a valid integer!");
 		}
 		try {
-			for (String rule : lib.rules.get(page)) {
+			for (String rule : Lib.rules.get(page)) {
 				source.sendMessage(rule);
 			}
 			source.sendMessage("To see the next page, do /rules " + (page + 1));

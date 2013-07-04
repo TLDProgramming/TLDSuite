@@ -21,14 +21,14 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDNotes.TLDNotes;
 
 public class PlayerCommands {
-	private final TLDNotes plugin;
-
+	private TLDNotes plugin;
+	
 	public PlayerCommands(TLDNotes instance) {
 		this.plugin = instance;
 	}
-	private Lib lib;
 
-	@Command(aliases = { "notes add", "notes new" }, usage = "<Note to add>", desc = "Adds notes to your notes file")
+
+	@Command(aliases = { "add", "new" }, usage = "<Note to add>", desc = "Adds notes to your notes file")
 	@Permissible("TLDNotes.add")
 	public void add(CommandSource source, CommandArguments args) throws CommandException {
 		if (source instanceof Player ) {
@@ -41,7 +41,7 @@ public class PlayerCommands {
 				file.getParentFile().mkdirs();
 				file.createNewFile();
 			} catch (IOException e1) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e1.printStackTrace();
 			}
 			try {
@@ -50,38 +50,39 @@ public class PlayerCommands {
 				while (br.readLine() != null){
 					h.add(br.readLine());
 				}
-				if (h.size() < lib.amount){
-					lib.Namount.put(name, false);
-				}else if (h.size() >= lib.amount){
-					lib.Namount.put(name, true);
+				if (h.size() < Lib.amount){
+					Lib.Namount.put(name, false);
+				}else if (h.size() >= Lib.amount){
+					Lib.Namount.put(name, true);
 				}
 				
 			} catch (FileNotFoundException e1) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e1.printStackTrace();
 			} catch (IOException e) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e.printStackTrace();
 			}
 			final String note = getFinalArg(args, 0);
 			try {
 				BufferedWriter out = new BufferedWriter(new FileWriter(path, true));
-				if (note.length() <= lib.Length){
-					if(!lib.Namount.get(name)){
+				if (note.length() <= Lib.Length){
+					if(!Lib.Namount.get(name)){
 						out.write("\n" + note);
-					} else if (lib.Namount.get(name)){
+						player.sendMessage("Note: "+note+" added");
+					} else if (Lib.Namount.get(name)){
 						player.sendMessage("Too many notes");
 					}
-				} else if(note.length() > lib.Length){
+				} else if(note.length() > Lib.Length){
 					player.sendMessage("Note is too long");
 				}
 
 				out.close();
 			} catch (FileNotFoundException e) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e.printStackTrace();
 			} catch (IOException e) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e.printStackTrace();
 			}
 
@@ -89,7 +90,7 @@ public class PlayerCommands {
 
 	}
 
-	@Command(aliases = { "notes read", }, desc = "Reads back your notes, line by line", min = 0, max = 0)
+	@Command(aliases = { "read", }, desc = "Reads back your notes, line by line", min = 0, max = 0)
 	@Permissible("TLDNotes.read")
 	public void read(CommandSource source, CommandArguments args) throws CommandException {
 		if (source instanceof Player) {
@@ -101,7 +102,7 @@ public class PlayerCommands {
 			try {
 				br = new BufferedReader(new FileReader(file));
 			} catch (FileNotFoundException e1) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e1.printStackTrace();
 			}
 			String line;
@@ -110,7 +111,7 @@ public class PlayerCommands {
 					player.sendMessage(line);
 				}
 			} catch (IOException e ) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e.printStackTrace();
 			} catch (NullPointerException e1){
 				source.sendMessage("You have no notes to read, try adding some with \"/Notes add <note>\"");
@@ -118,7 +119,7 @@ public class PlayerCommands {
 			try {
 				br.close();
 			} catch (IOException e) {
-				plugin.getLogger().warning(lib.error);
+				plugin.getLogger().warning(Lib.error);
 				e.printStackTrace();
 			}
 		}
