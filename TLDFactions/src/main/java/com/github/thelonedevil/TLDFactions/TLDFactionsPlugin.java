@@ -7,7 +7,6 @@ package com.github.thelonedevil.TLDFactions;
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
 
-import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDFactions.command.TLDFactionsBaseCommand;
 import com.github.thelonedevil.TLDFactions.command.TLDFactionsCommands;
 
@@ -16,8 +15,6 @@ import com.github.thelonedevil.TLDFactions.command.TLDFactionsCommands;
  */
 public class TLDFactionsPlugin extends Plugin {
 	private static TLDFactionsPlugin instance;
-	private Lib lib;
-
 	@Override
 	public void onLoad() {
 		setInstance(this);

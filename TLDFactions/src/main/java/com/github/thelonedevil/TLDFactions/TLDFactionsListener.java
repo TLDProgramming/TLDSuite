@@ -10,12 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.spout.api.component.widget.LabelComponent;
-import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;
 import org.spout.api.event.EventHandler;
-import org.spout.api.event.player.Action;
 import org.spout.api.event.player.PlayerChatEvent;
-import org.spout.api.event.player.PlayerInteractEntityEvent;
 import org.spout.api.event.player.PlayerJoinEvent;
 import org.spout.api.event.Listener;
 import org.spout.api.gui.Screen;
@@ -23,7 +20,6 @@ import org.spout.api.gui.ScreenStack;
 import org.spout.api.gui.Widget;
 import org.spout.api.Client;
 import org.spout.api.Platform;
-
 import com.github.thelonedevil.TLDCommonlib.DataBase;
 import com.github.thelonedevil.TLDCommonlib.Lib;
 
@@ -115,7 +111,7 @@ public class TLDFactionsListener implements Listener {
 		}
 	}
 
-	@EventHandler
+	/*@EventHandler
 	public void onPVP(PlayerInteractEntityEvent event) {
 		Player source = event.getEntity();
 		String name = source.getName();
@@ -130,6 +126,7 @@ public class TLDFactionsListener implements Listener {
 		if (e1 instanceof Player) {
 			target = (Player) e1;
 			name1 = target.getName();
+			Health start = target.get(Health.class);
 			if (action == Action.LEFT_CLICK) {
 				try {
 					rs = DataBase.rs(Lib.statement, query);
@@ -145,7 +142,7 @@ public class TLDFactionsListener implements Listener {
 					}
 					rs.close();
 					if(sourceFaction != "null" && sourceFaction.equalsIgnoreCase(targetFaction)){
-						event.setCancelled(true);						
+						
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -156,5 +153,5 @@ public class TLDFactionsListener implements Listener {
 		}
 		
 
-	}
+	}*/
 }

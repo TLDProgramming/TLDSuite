@@ -2,7 +2,7 @@ package com.github.thelonedevil.TLDNotes.commands;
 
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.exception.CommandException;
 
 import com.github.thelonedevil.TLDNotes.TLDNotes;
@@ -17,7 +17,7 @@ public class BaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@Command(aliases = { "Notes" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = { "Notes" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
 	public void notes(CommandSource source, CommandArguments args) throws CommandException {	
 	}
 }

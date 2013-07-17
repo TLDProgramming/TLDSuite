@@ -9,10 +9,9 @@ import java.util.List;
 
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.exception.CommandException;
 
-import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDFactions.TLDFactionsPlugin;
 
 /**
@@ -28,7 +27,7 @@ public class TLDFactionsBaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@Command(aliases = { "tldf", "TLDFactions" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = { "tldf", "TLDFactions" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
 	public void TLDFactions(CommandSource source, CommandArguments args) throws CommandException {
 		int amount = plugin.getEngine().getCommandManager().getCommand("TLDFactions").getChildren().size();
 		org.spout.api.command.Command[] cmds = new org.spout.api.command.Command[amount];

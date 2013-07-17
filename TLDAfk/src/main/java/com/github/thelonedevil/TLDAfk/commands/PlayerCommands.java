@@ -3,8 +3,10 @@ package com.github.thelonedevil.TLDAfk.commands;
 import org.spout.api.Server;
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
+import org.spout.api.command.annotated.Filter;
 import org.spout.api.command.annotated.Permissible;
+import org.spout.api.command.filter.PlayerFilter;
 import org.spout.api.exception.CommandException;
 
 import com.github.thelonedevil.TLDAfk.TLDAfk;
@@ -17,21 +19,23 @@ public class PlayerCommands {
 	public PlayerCommands(TLDAfk instance) {
 		this.plugin = instance;
 	}
+	private Lib lib = new Lib();
 
-	@Command(aliases = { "command", "cmd" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.", min = 0, max = 0)
+	@CommandDescription(aliases = { "command", "cmd" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.")
 	@Permissible("TLDAfk.toggle")
+	@Filter(PlayerFilter.class)
 	public void afk(CommandSource source, CommandArguments args) throws CommandException {
 		String name = source.getName();
-		if (Lib.afk.get(name) == false || Lib.afk.get(name) == null) {
-			Lib.afk.put(name, true);
+		if (lib.afk.get(name) == false || lib.afk.get(name) == null) {
+			lib.afk.put(name, true);
 			source.sendMessage("You are now AFK");
 			String message = name + " Is now AFK";
-			((Server) plugin.getEngine()).broadcastMessage(message);
-		} else if (Lib.afk.get(name) == true) {
-			Lib.afk.put(name, false);
+			((Server) lib.getEngine()).broadcastMessage(message);
+		} else if (lib.afk.get(name) == true) {
+			lib.afk.put(name, false);
 			source.sendMessage("You are no longer AFK");
 			String message = name + " Is no longer AFK";
-			((Server) plugin.getEngine()).broadcastMessage(message);
+			((Server) lib.getEngine()).broadcastMessage(message);
 		}
 	}
 }

@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBase {
-	private Lib lib;
+	private Lib plugin;
 
 	public DataBase(Lib instance) {
-		this.lib = instance;
+		this.plugin = instance;
 	}
 
 	Connection connect(String path) throws SQLException, ClassNotFoundException, NullPointerException {

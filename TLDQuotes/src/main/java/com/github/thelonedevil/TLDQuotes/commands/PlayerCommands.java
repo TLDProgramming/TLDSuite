@@ -5,7 +5,7 @@ import java.util.Random;
 import org.spout.api.Server;
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.command.annotated.Permissible;
 import org.spout.api.entity.Player;
 import org.spout.api.exception.CommandException;
@@ -20,20 +20,21 @@ public class PlayerCommands {
 	public PlayerCommands(Quoter instance) {
 		this.plugin = instance;
 	}
-
+	private Lib lib = new Lib();
+	
 	final String[] quote1 = new String[1];
 	String quote;
 	String last;
 
-	@Command(aliases = "Quote", usage = "/Quote", desc = "Displays a random quote from a list", min = 0, max = 2)
+	@CommandDescription(aliases = "Quote", usage = "/Quote", desc = "Displays a random quote from a list")
 	@Permissible("Quoter.quote")
 	public void Quotes(CommandSource source, CommandArguments args) throws CommandException {
-		int random = new Random().nextInt(Lib.Quotes.size());
+		int random = new Random().nextInt(lib.Quotes.size());
 		if (args.length() == 0) {
-			quote = Lib.Quotes.get(random);
+			quote = lib.Quotes.get(random);
 			quote1[0] = quote;
 			source.sendMessage(quote);
-		} else if (args.length() == 1 && args.getString(0).equalsIgnoreCase("share")) {
+		} else if (args.length() == 1 && args.popString("shareing").equalsIgnoreCase("share")) {
 			if (quote1[0] != null) {
 				last = quote1[0];
 				((Server) plugin.getEngine()).broadcastMessage(last);
@@ -42,8 +43,8 @@ public class PlayerCommands {
 				source.sendMessage("You do not have a quote to share :O");
 			}
 
-		} else if ((args.length() == 2 && args.getString(0).equalsIgnoreCase("share")) && (args.get() != null)) {
-			Player target = plugin.getEngine().getPlayer(args.getString(1), true);
+		} else if ((args.length() == 2 && args.popString("Shareing").equalsIgnoreCase("share")) && (args.get() != null)) {
+			Player target = ((Server)plugin.getEngine()).getPlayer(args.popString("Targer player"), true);
 			if (target == null) {
 				source.sendMessage( "Player is not online!");
 				return;
@@ -54,5 +55,6 @@ public class PlayerCommands {
 				source.sendMessage("You do not have a quote to share :O");
 			}
 		}
+		args.assertCompletelyParsed();
 	}
 }

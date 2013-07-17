@@ -6,4 +6,4 @@ website: ${project.organization.url}
 
 main: com.github.thelonedevil.TLDCommonlib.Lib
 load: startup
-platform: BOTH
+platform: SERVER

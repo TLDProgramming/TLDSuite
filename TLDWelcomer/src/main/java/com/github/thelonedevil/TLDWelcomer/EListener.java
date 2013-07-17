@@ -18,25 +18,27 @@ public class EListener implements Listener {
 	}
 
 	static String name;
+	
+	private Lib lib = new Lib();
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		name = player.getName();
-		if (Lib.logins.get(name) == null) {
-			plugin.getLogger().info(Lib.error);
-		} else if (Lib.logins.get(name) == 1) {
+		if (lib.logins.get(name) == null) {
+			plugin.getLogger().info(lib.error);
+		} else if (lib.logins.get(name) == 1) {
 			player.sendMessage("Welcome, " + name + ".");
-			player.sendMessage(Lib.firstlogin);
-		} else if (Lib.logins.get(name) == 2) {
+			player.sendMessage(lib.firstlogin);
+		} else if (lib.logins.get(name) == 2) {
 			player.sendMessage("Welcome back, " + name + ".");
 			player.sendMessage("You have played once before.");
-			player.sendMessage(Lib.otherlogin);
-		} else if (Lib.logins.get(name) > 2) {
-			int plays = Lib.logins.get(name) - 1;
+			player.sendMessage(lib.otherlogin);
+		} else if (lib.logins.get(name) > 2) {
+			int plays = lib.logins.get(name) - 1;
 			player.sendMessage("Welcome back, " + name + ".");
 			player.sendMessage("You have played " + plays + " times before.");
-			player.sendMessage(Lib.otherlogin);
+			player.sendMessage(lib.otherlogin);
 		}
 	}
 }

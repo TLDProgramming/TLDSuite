@@ -1,63 +1,66 @@
 package com.github.thelonedevil.TLDCommonlib;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.logging.Level;
 
 import org.spout.api.UnsafeMethod;
-import org.spout.api.exception.ConfigurationException;
 import org.spout.api.plugin.Plugin;
-import org.spout.api.util.config.Configuration;
-import org.spout.api.util.config.yaml.YamlConfiguration;
+import org.spout.cereal.config.Configuration;
+import org.spout.cereal.config.ConfigurationException;
+import org.spout.cereal.config.yaml.YamlConfiguration;
 
 public class Lib extends Plugin {
 	public final String configPath = "plugins/TLDCommonLib/config.yml";
-	public static YamlConfiguration config;
-	public static String logged = "Plugin has been ";
-	public static String error = "An error has happened...... incoming stack trace....";
-	public static List<String> Quotes;
+	private YamlConfiguration config;
+	public String logged = "Plugin has been ";
+	public String error = "An error has happened...... incoming stack trace....";
+	public List<String> Quotes;
 	public String testQuote;
 	public File libFolder = new File("plugins/TLDCommonLib/");
-	public static int reserve;
-	public static final Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
-	public static boolean onjoin = true;
-	public static final List<String> onJoin = new ArrayList<String>();
-	public static String firstlogin;
-	public static String otherlogin;
-	public static HashMap<String, Integer> logins = new HashMap<String, Integer>();
-	public static HashMap<String, Boolean> afk = new HashMap<String, Boolean>();
-	public static int Length;
-	public static int amount;
-	public static HashMap<String, Boolean> Namount = new HashMap<String, Boolean>();
-	public static long idletime;
-	public static List<String> admins = new ArrayList<String>();
-	public static int reserved;
+	public int reserve;
+	public final Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
+	public boolean onjoin = true;
+	public final List<String> onJoin = new ArrayList<String>();
+	public String firstlogin;
+	public String otherlogin;
+	public HashMap<String, Integer> logins = new HashMap<String, Integer>();
+	public HashMap<String, Boolean> afk = new HashMap<String, Boolean>();
+	public int Length;
+	public int amount;
+	public HashMap<String, Boolean> Namount = new HashMap<String, Boolean>();
+	public long idletime;
+	public List<String> admins = new ArrayList<String>();
+	public int reserved;
 	private Data data = new Data(this);
 	private DataBase sql = new DataBase(this);
 	public static Statement statement;
 	public static Connection connection;
-	public static HashMap<String, String> factions = new HashMap<String, String>();
+	public HashMap<String, String> factions = new HashMap<String, String>();
 
 	@Override
 	public void onLoad() {
 		setInstance(this);
+		getLogger().info(logged + "Loaded!");
+
+	}
+
+	
+	@Override
+	@UnsafeMethod
+	public void onEnable() {
 		libFolder.mkdirs();
 		try {
 			File f = new File(configPath);
 			if (!f.exists()) {
-				extract(configPath, "config.yml");
+				data.extract(configPath, "config.yml");
 			}
 			if (f.exists()) {
 				SetConfig();
@@ -73,48 +76,13 @@ public class Lib extends Plugin {
 			e.printStackTrace();
 			getLogger().log(Level.INFO, "Error handlinmg config.yml");
 		}
-		getLogger().info(logged + "Loaded!");
-
-	}
-
-	void extract(String path, String name) throws IOException {
-		JarFile jarfile = new JarFile(getFile());
-		Enumeration<JarEntry> enu = jarfile.entries();
-		while (enu.hasMoreElements()) {
-			JarEntry je = enu.nextElement();
-			if (je.getName().equalsIgnoreCase(name)) {
-				File fl = new File(path);
-				if (je.isDirectory()) {
-					continue;
-				} else if (!je.isDirectory()) {
-					if (!fl.exists()) {
-						fl.getParentFile().mkdirs();
-						fl = new File(path);
-						fl.createNewFile();
-						getLogger().log(Level.INFO, "Generating config.yml...");
-						InputStream is = jarfile.getInputStream(je);
-						FileOutputStream fo = new FileOutputStream(path);
-						while (is.available() > 0) {
-							fo.write(is.read());
-						}
-						fo.close();
-						is.close();
-					}
-				}
-			}
-		}
-		jarfile.close();
-	}
-
-	@Override
-	@UnsafeMethod
-	public void onEnable() {
 		try {
 			File file = new File("plugins/TLDCommonLib/data.sqlite");
 			file.createNewFile();
 			connection = sql.connect("plugins/TLDCommonLib/data.sqlite");
 			statement = sql.state(connection, 30);
 			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
+			sql.createTable(statement, "FactionClaims","Faction", "string", "Blocks","BLOB");
 			data.factionsdat();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -143,6 +111,7 @@ public class Lib extends Plugin {
 			SLAPI.save(logins, "plugins/TLDCommonlib/logins.dat");
 			SLAPI.save(admins, "plugins/TLDCommonlib/reserve.dat");
 			SLAPI.save(factions, "plugins/TLDCommonlib/FactionMottos.dat");
+			connection.close();
 		} catch (Exception e) {
 			errorLogger();
 			e.printStackTrace();
@@ -165,7 +134,7 @@ public class Lib extends Plugin {
 		config = new YamlConfiguration(new File(configPath));
 	}
 
-	public static Configuration FetchConfig() {
+	public Configuration FetchConfig() {
 		return config;
 	}
 
@@ -173,13 +142,13 @@ public class Lib extends Plugin {
 		getLogger().info(error);
 	}
 
-	public static Lib instance;
+	public Lib instance;
 
-	private static void setInstance(Lib plugin) {
+	private void setInstance(Lib plugin) {
 		instance = plugin;
 	}
 
-	public static Lib getInstance() {
+	public  Lib getInstance() {
 		return instance;
 	}
 }

@@ -19,12 +19,12 @@ public class EListener implements Listener {
 	public EListener(Quoter instance) {
 		this.plugin = instance;
 	}
-
+	private Lib lib = new Lib();
 	@EventHandler
 	public void onPlayerDeath(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
 		if (player != null) {
-			String quote = Lib.Quotes.get(new Random().nextInt(Lib.Quotes.size()));
+			String quote = lib.Quotes.get(new Random().nextInt(lib.Quotes.size()));
 			player.sendMessage(quote);
 			return;
 		}

@@ -2,9 +2,6 @@ package com.github.thelonedevil.TLDNotes;
 
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
-import org.spout.api.plugin.PluginLogger;
-
-import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDNotes.commands.BaseCommand;
 import com.github.thelonedevil.TLDNotes.commands.PlayerCommands;
 

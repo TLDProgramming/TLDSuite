@@ -1,14 +1,19 @@
 package com.github.thelonedevil.TLDCommonlib;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
-
 import java.util.Random;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.logging.Level;
 
 import org.spout.api.Server;
-import org.spout.api.util.config.ConfigurationNode;
+import org.spout.cereal.config.ConfigurationNode;
 
 public class Data {
 	private Lib plugin;
@@ -16,10 +21,39 @@ public class Data {
 	public Data(Lib instance) {
 		this.plugin = instance;
 	}
+	void extract(String path, String name) throws IOException {
+		JarFile jarfile = new JarFile(plugin.getFile());
+		Enumeration<JarEntry> enu = jarfile.entries();
+		while (enu.hasMoreElements()) {
+			JarEntry je = enu.nextElement();
+			if (je.getName().equalsIgnoreCase(name)) {
+				File fl = new File(path);
+				if (je.isDirectory()) {
+					continue;
+				} else if (!je.isDirectory()) {
+					if (!fl.exists()) {
+						fl.getParentFile().mkdirs();
+						fl = new File(path);
+						fl.createNewFile();
+						plugin.getLogger().log(Level.INFO, "Generating config.yml...");
+						InputStream is = jarfile.getInputStream(je);
+						FileOutputStream fo = new FileOutputStream(path);
+						while (is.available() > 0) {
+							fo.write(is.read());
+						}
+						fo.close();
+						is.close();
+					}
+				}
+			}
+		}
+		jarfile.close();
+	}
+
 
 	public void loginMessages() {
-		Lib.firstlogin = Lib.config.getNode("Logins.First").getString();
-		Lib.otherlogin = Lib.config.getNode("Logins.Other").getString();
+		plugin.firstlogin = plugin.FetchConfig().getNode("Logins.First").getString();
+		plugin.otherlogin = plugin.FetchConfig().getNode("Logins.Other").getString();
 		loginsdat();
 	}
 
@@ -29,26 +63,26 @@ public class Data {
 	}
 
 	public void notes() {
-		Lib.Length = Lib.config.getNode("Notes.length").getInt();
-		Lib.amount = Lib.config.getNode("Notes.amount").getInt();
+		plugin.Length = plugin.FetchConfig().getNode("Notes.length").getInt();
+		plugin.amount = plugin.FetchConfig().getNode("Notes.amount").getInt();
 	}
 
 	public void afk() {
-		Lib.idletime = Lib.config.getNode("AFK.IdleTime").getInt() * 60000;
+		plugin.idletime = plugin.FetchConfig().getNode("AFK.IdleTime").getInt() * 60000;
 	}
 
 	public void reserve() {
 		reservedat();
-		Lib.reserve = Lib.admins.size();
-		Lib.reserved = ((Server) Lib.getInstance().getEngine()).getMaxPlayers() - (Lib.reserve);
+		plugin.reserve = plugin.admins.size();
+		plugin.reserved = ((Server) plugin.getEngine()).getMaxPlayers() - (plugin.reserve);
 
 	}
 
 	public void randomQuote() {
 		try {
-			Lib.Quotes = (Lib.config.getNode("Quotes").getStringList());
-			if (Lib.Quotes != null) {
-				plugin.testQuote = Lib.Quotes.get(new Random().nextInt(Lib.Quotes.size()));
+			plugin.Quotes = (plugin.FetchConfig().getNode("Quotes").getStringList());
+			if (plugin.Quotes != null) {
+				plugin.testQuote = plugin.Quotes.get(new Random().nextInt(plugin.Quotes.size()));
 				if (plugin.testQuote != null) {
 					plugin.getLogger().info("Quotes loaded");
 				} else
@@ -61,13 +95,13 @@ public class Data {
 	}
 
 	public void ruleCheck() {
-		ConfigurationNode node = Lib.config.getNode("Rules");
+		ConfigurationNode node = plugin.FetchConfig().getNode("Rules");
 		int i = 1;
 		for (String key : node.getKeys(true)) {
 			ConfigurationNode node1 = node.getChild(key);
 			List<String> list = node1.getStringList();
 			if (list != null) {
-				Lib.rules.put(i, list);
+				plugin.rules.put(i, list);
 				i++;
 			}
 		}
@@ -75,17 +109,17 @@ public class Data {
 	}
 
 	public void rulesOnJoin() {
-		if (Lib.config.getNode("onPlayerJoin.enabled").getBoolean() == true) {
-			Lib.onjoin = true;
-			ConfigurationNode node = Lib.config.getNode("onPlayerJoin.rules");
+		if (plugin.FetchConfig().getNode("onPlayerJoin.enabled").getBoolean() == true) {
+			plugin.onjoin = true;
+			ConfigurationNode node = plugin.FetchConfig().getNode("onPlayerJoin.rules");
 			List<String> list = node.getStringList();
 			if (list != null) {
-				Lib.onJoin.addAll(list);
+				plugin.onJoin.addAll(list);
 			}
-			Lib.onJoin.add("To see the rest of the rules use /rules 1");
+			plugin.onJoin.add("To see the rest of the rules use /rules 1");
 			plugin.getLogger().info("Player join rules are loaded");
 		} else {
-			Lib.onjoin = false;
+			plugin.onjoin = false;
 			plugin.getLogger().info("Rules displayed on player join has been disabled");
 		}
 	}
@@ -95,14 +129,14 @@ public class Data {
 		File afkdat = new File("plugins/TLDCommonlib/reserve.dat");
 		if (afkdat.exists()) {
 			try {
-				Lib.admins = (List<String>) SLAPI.load("plugins/TLDCommonlib/reserve.dat");
+				plugin.admins = (List<String>) SLAPI.load("plugins/TLDCommonlib/reserve.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Reserve data has been Loaded from disk");
 			try {
-				SLAPI.save(Lib.admins, "plugins/TLDCommonlib/reserve.dat");
+				SLAPI.save(plugin.admins, "plugins/TLDCommonlib/reserve.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -126,14 +160,14 @@ public class Data {
 		File loginsdat = new File("plugins/TLDCommonlib/logins.dat");
 		if (loginsdat.exists()) {
 			try {
-				Lib.logins = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/logins.dat");
+				plugin.logins = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/logins.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Login data has been Loaded from disk");
 			try {
-				SLAPI.save(Lib.logins, "plugins/TLDCommonlib/logins.dat");
+				SLAPI.save(plugin.logins, "plugins/TLDCommonlib/logins.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -156,14 +190,14 @@ public class Data {
 		File afkdat = new File("plugins/TLDCommonlib/FactionMottos.dat");
 		if (afkdat.exists()) {
 			try {
-				Lib.factions = (HashMap<String, String>) SLAPI.load("plugins/TLDCommonlib/FactionMottos.dat");
+				plugin.factions = (HashMap<String, String>) SLAPI.load("plugins/TLDCommonlib/FactionMottos.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("Faction Motto data has been Loaded from disk");
 			try {
-				SLAPI.save(Lib.factions, "plugins/TLDCommonlib/FactionMottos.dat");
+				SLAPI.save(plugin.factions, "plugins/TLDCommonlib/FactionMottos.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();

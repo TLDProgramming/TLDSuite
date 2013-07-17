@@ -2,13 +2,9 @@ package com.github.thelonedevil.TLDWelcomer;
 
 import org.spout.api.plugin.Plugin;
 
-import com.github.thelonedevil.TLDCommonlib.Lib;
-
 
 public class Welcomer extends Plugin {
 	private static Welcomer instance;
-	private Lib lib;
-
 	@Override
 	public void onLoad() {
 		setInstance(this);

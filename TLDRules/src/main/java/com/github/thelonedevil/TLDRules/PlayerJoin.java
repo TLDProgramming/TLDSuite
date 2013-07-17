@@ -17,12 +17,13 @@ public class PlayerJoin implements Listener {
 		this.plugin = instance;
 	}
 
-
+	private Lib lib = new Lib();
+	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		if (player != null && Lib.onjoin) {
-			for (String string : Lib.onJoin) {
+		if (player != null && lib.onjoin) {
+			for (String string : lib.onJoin) {
 				player.sendMessage(string);
 			}
 			return;

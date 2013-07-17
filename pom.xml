@@ -17,6 +17,7 @@
 		<module>TLDReserve</module>
 		<module>TLDRules</module>
 		<module>TLDWelcomer</module>
+        <module>TLDSpells</module>
 		<module>distribution</module>
 	</modules>
 <distributionManagement>

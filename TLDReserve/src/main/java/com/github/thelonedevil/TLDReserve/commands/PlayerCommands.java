@@ -2,7 +2,7 @@ package com.github.thelonedevil.TLDReserve.commands;
 
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.command.annotated.Permissible;
 import org.spout.api.exception.CommandException;
 
@@ -16,22 +16,24 @@ public class PlayerCommands {
 	public PlayerCommands(TLDReserve instance) {
 		this.plugin = instance;
 	}
+	
+	private Lib lib = new Lib();
 
-	@Command(aliases = { "admin" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.", min = 1, max = 2)
-	@Permissible("TLDReserve.some.permission")
+	@CommandDescription(aliases = { "admin" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.")
+	@Permissible("TLDReserve.add")
 	public void admin(CommandSource source, CommandArguments args) throws CommandException {
-		String target = args.getString(0);
+		String target = args.popString("Target Player");
 		if (args.length() == 1) {
-			if (!Lib.admins.contains(target)) {
-				Lib.admins.add(target);
+			if (!lib.admins.contains(target)) {
+				lib.admins.add(target);
 				source.sendMessage(target + " has had a place on the server reserved for them");
 			} else {
 				source.sendMessage(target + " already has a place reserved for him");
 			}
 		} else if (args.length() == 2) {
-			if (args.getString(1).equalsIgnoreCase("remove")) {
-				if (Lib.admins.contains(target)) {
-					Lib.admins.remove(target);
+			if (args.popString("remove").equalsIgnoreCase("remove")) {
+				if (lib.admins.contains(target)) {
+					lib.admins.remove(target);
 					source.sendMessage(target + " no longer has a place on the server reserved for them");
 				} else {
 					source.sendMessage(target + " did not have a place reserved for them");

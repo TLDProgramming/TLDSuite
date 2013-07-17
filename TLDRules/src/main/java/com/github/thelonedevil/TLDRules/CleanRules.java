@@ -2,9 +2,6 @@ package com.github.thelonedevil.TLDRules;
 
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
-import org.spout.api.plugin.PluginLogger;
-
-import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDRules.commands.PlayerCommands;
 
 /**
@@ -14,8 +11,6 @@ import com.github.thelonedevil.TLDRules.commands.PlayerCommands;
  */
 public class CleanRules extends Plugin {
 	private static CleanRules instance;
-	private Lib lib;
-
 	@Override
 	public void onLoad() {
 		setInstance(this);

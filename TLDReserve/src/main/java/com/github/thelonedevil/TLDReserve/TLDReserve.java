@@ -3,7 +3,6 @@ package com.github.thelonedevil.TLDReserve;
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
 
-import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDReserve.commands.PlayerCommands;
 
 /**
