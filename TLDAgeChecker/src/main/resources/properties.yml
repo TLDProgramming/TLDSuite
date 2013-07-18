@@ -1,0 +1,10 @@
+name: ${project.name}
+version: ${project.version} b${buildNumber}
+description: ${project.description}
+author: ${project.organization.name}
+website: ${project.organization.url}
+
+main: ${mainClass}
+depends: [${depends}]
+load: startup
+platform: BOTH

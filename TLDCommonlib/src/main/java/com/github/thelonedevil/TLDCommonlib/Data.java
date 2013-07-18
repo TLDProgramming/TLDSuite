@@ -77,6 +77,10 @@ public class Data {
 		plugin.reserved = ((Server) plugin.getEngine()).getMaxPlayers() - (plugin.reserve);
 
 	}
+	public void dateformat() {
+		plugin.dateformat = plugin.FetchConfig().getNode("DateFormat").getString("DD/MM/YYYY");
+		
+	}
 
 	public void randomQuote() {
 		try {
@@ -215,5 +219,6 @@ public class Data {
 		}
 
 	}
+
 
 }

@@ -18,6 +18,7 @@
 		<module>TLDRules</module>
 		<module>TLDWelcomer</module>
         <module>TLDSpells</module>
+        <module>TLDAgeChecker</module>
 		<module>distribution</module>
 	</modules>
 <distributionManagement>

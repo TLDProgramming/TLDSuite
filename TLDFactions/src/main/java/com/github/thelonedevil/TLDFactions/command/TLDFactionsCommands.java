@@ -215,34 +215,48 @@ public class TLDFactionsCommands {
 				Point min = point.subtract(x, y, z);
 				World w = point.getWorld();
 				List<Block> blocksnew = getBlocks(max, min, w);
-				List<Block> blocksold;
-
+				List<Point> pointsnew = getPoints(blocksnew);
 				try {
 					String query1 = "SELECT Faction, Blocks FROM FactionClaims";
 					ResultSet rs = DataBase.rs(Lib.statement, query1);
+					List<Point> points = new ArrayList<Point>();
 					while (rs.next()) {
 						if (rs.getString("Faction").equalsIgnoreCase(Faction)) {
-							InputStream in = rs.getBlob("Blocks").getBinaryStream();
-							ObjectInputStream oin = new ObjectInputStream(in);
-							blocksold = (List<Block>) oin.readObject();
-							List<Block> blocks = addList(blocksnew, blocksold);
-							OutputStream out = rs.getBlob("Blocks").setBinaryStream(1);
-							ObjectOutputStream oout = new ObjectOutputStream(out);
-							oout.writeObject(blocks);
-							rs.updateRow();
-							rs.close();
+							int x1 = rs.getInt("x");
+							int y1 = rs.getInt("y");
+							int z1 = rs.getInt("z");
+							Point point1 = new Point(w, x1, y1, z1);
+							points.add(point1);
+							rs.deleteRow();
 						}
 					}
-				} catch (IOException e) {
-					e.printStackTrace();
+					List<Point> points1 = addList(points, pointsnew);
+					List<Integer> x2 = getXs(points1);
+					List<Integer> y2 = getYs(points1);
+					List<Integer> z2 = getZs(points1);
+					addCoods(x2, y2, z2, Faction);
+
+					rs.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
 
+			} else {
+				source.sendMessage("You are not in a Faction so you cannot claim land");
 			}
 		}
+	}
+
+	private List<Point> getPoints(List<Block> blocksnew) {
+		List<Point> points = new ArrayList<Point>();
+		int i = 0;
+		while (blocksnew.get(i) != null) {
+			Block block = blocksnew.get(i);
+			Point point = block.getPosition();
+			points.add(point);
+			i++;
+		}
+		return points;
 	}
 
 	List<Block> getBlocks(Point max, Point min, World w) {
@@ -268,8 +282,8 @@ public class TLDFactionsCommands {
 
 	}
 
-	List<Block> addList(List<Block> a, List<Block> b) {
-		List<Block> blocks = new ArrayList<Block>();
+	List<Point> addList(List<Point> a, List<Point> b) {
+		List<Point> blocks = new ArrayList<Point>();
 		int size1 = a.size();
 		int size2 = b.size();
 		int index = 0;
@@ -284,6 +298,48 @@ public class TLDFactionsCommands {
 			}
 		}
 		return blocks;
+
+	}
+
+	List<Integer> getXs(List<Point> points) {
+		List<Integer> xs = new ArrayList<Integer>();
+		int index = 0;
+		while (points.get(index) != null) {
+			xs.add(points.get(index).getBlockX());
+			index++;
+		}
+		return xs;
+	}
+
+	List<Integer> getYs(List<Point> points) {
+		List<Integer> ys = new ArrayList<Integer>();
+		int index = 0;
+		while (points.get(index) != null) {
+			ys.add(points.get(index).getBlockY());
+			index++;
+		}
+		return ys;
+	}
+
+	List<Integer> getZs(List<Point> points) {
+		List<Integer> zs = new ArrayList<Integer>();
+		int index = 0;
+		while (points.get(index) != null) {
+			zs.add(points.get(index).getBlockZ());
+			index++;
+		}
+		return zs;
+	}
+
+	void addCoods(List<Integer> X, List<Integer> Y, List<Integer> Z, String faction) throws SQLException {
+		int index = 0;
+		while (X.get(index) != null && Y.get(index) != null && Z.get(index) != null) {
+			int x = X.get(index);
+			int y = Y.get(index);
+			int z = Z.get(index);
+			String sql = "INSERT INTO FactionsClaims Values '" + faction + "'," + x + "," + y + "," + z;
+			Lib.statement.executeUpdate(sql);
+		}
 
 	}
 }

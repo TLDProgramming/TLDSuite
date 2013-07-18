@@ -18,10 +18,10 @@ import org.spout.cereal.config.ConfigurationException;
 import org.spout.cereal.config.yaml.YamlConfiguration;
 
 public class Lib extends Plugin {
+	
+	//config
 	public final String configPath = "plugins/TLDCommonLib/config.yml";
 	private YamlConfiguration config;
-	public String logged = "Plugin has been ";
-	public String error = "An error has happened...... incoming stack trace....";
 	public List<String> Quotes;
 	public String testQuote;
 	public File libFolder = new File("plugins/TLDCommonLib/");
@@ -39,11 +39,17 @@ public class Lib extends Plugin {
 	public long idletime;
 	public List<String> admins = new ArrayList<String>();
 	public int reserved;
+	public HashMap<String, String> factions = new HashMap<String, String>();
+	public String dateformat;
+	
+	//other
+	public String logged = "Plugin has been ";
+	public String error = "An error has happened...... incoming stack trace....";
 	private Data data = new Data(this);
 	private DataBase sql = new DataBase(this);
 	public static Statement statement;
 	public static Connection connection;
-	public HashMap<String, String> factions = new HashMap<String, String>();
+
 
 	@Override
 	public void onLoad() {
@@ -82,7 +88,7 @@ public class Lib extends Plugin {
 			connection = sql.connect("plugins/TLDCommonLib/data.sqlite");
 			statement = sql.state(connection, 30);
 			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
-			sql.createTable(statement, "FactionClaims","Faction", "string", "Blocks","BLOB");
+			sql.createTable(statement, "FactionClaims","Faction", "string", "x","int","y","int","z","int");
 			data.factionsdat();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -100,6 +106,7 @@ public class Lib extends Plugin {
 		data.afk();
 		data.reserve();
 		data.randomQuote();
+		data.dateformat();
 
 		getLogger().info(logged + "Enabled!");
 	}
