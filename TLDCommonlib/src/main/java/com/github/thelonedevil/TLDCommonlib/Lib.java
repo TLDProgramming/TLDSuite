@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
-import org.spout.api.UnsafeMethod;
 import org.spout.api.plugin.Plugin;
 import org.spout.cereal.config.Configuration;
 import org.spout.cereal.config.ConfigurationException;
@@ -60,7 +59,6 @@ public class Lib extends Plugin {
 
 	
 	@Override
-	@UnsafeMethod
 	public void onEnable() {
 		libFolder.mkdirs();
 		try {
@@ -82,6 +80,7 @@ public class Lib extends Plugin {
 			e.printStackTrace();
 			getLogger().log(Level.INFO, "Error handlinmg config.yml");
 		}
+		//database
 		try {
 			File file = new File("plugins/TLDCommonLib/data.sqlite");
 			file.createNewFile();
@@ -99,7 +98,10 @@ public class Lib extends Plugin {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
+		// register listener
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
+		
+		//data loading
 		data.loginMessages();
 		data.notes();
 		data.rules();
@@ -112,7 +114,6 @@ public class Lib extends Plugin {
 	}
 
 	@Override
-	@UnsafeMethod
 	public void onDisable() {
 		try {
 			SLAPI.save(logins, "plugins/TLDCommonlib/logins.dat");

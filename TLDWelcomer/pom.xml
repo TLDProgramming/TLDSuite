@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project Details -->
-    <groupId>com.github.thelonedevil</groupId>
     <artifactId>TLDWelcomer</artifactId>
     <name>TLDWelcomer</name>
     <url>http://maven.apache.org</url>

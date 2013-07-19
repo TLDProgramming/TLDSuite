@@ -16,7 +16,7 @@ public class Bolt {
 		World world = p.getWorld();
 		Substance item = world.createEntity(p.getScene().getPosition().add(0, 1.6f, 0), projectile).add(projectile);
 		SceneComponent scene = item.getOwner().getScene();
-		//scene.setShape(mass, new SphereShape(0.1f)); // TODO: Correct this
+		// scene.setShape(mass, new SphereShape(0.1f)); // TODO: Correct this
 		scene.impulse(VectorMath.getDirection(p.getScene().getRotation()).multiply(250)).setMovementVelocity(Vector3.FORWARD).force(Vector3.FORWARD);// TODO: Need real parameters
 		if (item instanceof Projectile) {
 			((Projectile) item).setShooter(p);

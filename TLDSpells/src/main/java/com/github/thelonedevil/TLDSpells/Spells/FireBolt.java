@@ -9,16 +9,14 @@ import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.entity.EntityInteractEntityEvent;
 import org.spout.api.geo.discrete.Point;
-
-import org.spout.vanilla.component.entity.living.Human;
 import org.spout.vanilla.component.entity.misc.Health;
 import org.spout.vanilla.component.entity.misc.Level;
-import org.spout.vanilla.component.entity.substance.projectile.Snowball;
 import org.spout.vanilla.data.effect.GeneralEffect;
 import org.spout.vanilla.data.effect.type.SmokeEffect;
 import org.spout.vanilla.event.world.PlayParticleEffectEvent;
 
 import com.github.thelonedevil.TLDSpells.TLDSpellsPlugin;
+import com.github.thelonedevil.TLDSpells.Spells.entity.Fireball;
 import com.github.thelonedevil.TLDSpells.event.PlayerCastSpellEvent;
 
 public class FireBolt extends Bolt implements Listener {
@@ -31,7 +29,7 @@ public class FireBolt extends Bolt implements Listener {
 	HashMap<UUID, Player> list = new HashMap<UUID, Player>();
 
 	public void cast(Player p) {
-		Entity s = Bolt.cast(p, Snowball.class); //TODO replace Snowball.class with real fireball class
+		Entity s = Bolt.cast(p, Fireball.class);
 		list.put(s.getUID(), p);
 		PlayerCastSpellEvent event = new PlayerCastSpellEvent(p, this);
 		plugin.getEngine().getEventManager().callEvent(event);

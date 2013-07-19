@@ -16,7 +16,6 @@ import org.spout.vanilla.util.PlayerUtil;
 import com.github.thelonedevil.TLDSpells.Spells.FireBolt;
 import com.github.thelonedevil.TLDSpells.Spells.HealingBolt;
 import com.github.thelonedevil.TLDSpells.Spells.IceBolt;
-import com.github.thelonedevil.TLDSpells.event.PlayerCastSpellEvent;
 import com.github.thelonedevil.TLDSpells.staffs.StaffMaterials;
 
 /**

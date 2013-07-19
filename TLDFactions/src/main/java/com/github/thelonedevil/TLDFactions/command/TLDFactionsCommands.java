@@ -4,11 +4,6 @@
  */
 package com.github.thelonedevil.TLDFactions.command;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -183,7 +178,6 @@ public class TLDFactionsCommands {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@CommandDescription(aliases = { "claim" }, desc = "claims land for your faction")
 	@Permissible("TLDFactions.claim")
 	@Filter(PlayerFilter.class)

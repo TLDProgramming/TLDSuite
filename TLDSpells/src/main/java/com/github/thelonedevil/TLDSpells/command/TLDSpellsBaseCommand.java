@@ -33,4 +33,5 @@ public class TLDSpellsBaseCommand {
 		// Calling this command will send whoever issued it the message below.
 		source.sendMessage("The TLDSpells plugin base command has been successfully issued. (Type a sub-command)");
 	}
+	
 }
