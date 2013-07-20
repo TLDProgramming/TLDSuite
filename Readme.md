@@ -52,7 +52,7 @@ To use in your own plugin devlopment add this to your pom.xml
         <dependency>
             <groupId>org.spout</groupId>
             <artifactId>spoutapi</artifactId>
-            <version>${spoutVersion}</version>
+            <version>dev-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         
