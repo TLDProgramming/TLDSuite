@@ -77,6 +77,10 @@ public class Data {
 		plugin.reserved = ((Server) plugin.getEngine()).getMaxPlayers() - (plugin.reserve);
 
 	}
+	public void factions(){
+		factionsdat();
+		claimsdat();
+	}
 	public void dateformat() {
 		plugin.dateformat = plugin.FetchConfig().getNode("DateFormat").getString("DD/MM/YYYY");
 		
@@ -216,6 +220,36 @@ public class Data {
 				e.printStackTrace();
 			}
 			plugin.getLogger().info("FactionMottos.dat has been created");
+		}
+
+	}
+	@SuppressWarnings("unchecked")
+	void claimsdat() {
+		File afkdat = new File("plugins/TLDCommonlib/FactionClaims.dat");
+		if (afkdat.exists()) {
+			try {
+				plugin.factionsclaims= (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/FactionClaims.dat");
+			} catch (Exception e) {
+				plugin.errorLogger();
+				e.printStackTrace();
+			}
+			plugin.getLogger().info("Faction Motto data has been Loaded from disk");
+			try {
+				SLAPI.save(plugin.factionsclaims, "plugins/TLDCommonlib/FactionClaims.dat");
+			} catch (Exception e) {
+				plugin.errorLogger();
+				e.printStackTrace();
+			}
+		} else if (!afkdat.exists()) {
+			plugin.getLogger().info("FactionClaims.dat is missing... creating...");
+			try {
+				plugin.getDataFolder().mkdirs();
+				afkdat.createNewFile();
+			} catch (IOException e) {
+				plugin.errorLogger();
+				e.printStackTrace();
+			}
+			plugin.getLogger().info("FactionClaims.dat has been created");
 		}
 
 	}

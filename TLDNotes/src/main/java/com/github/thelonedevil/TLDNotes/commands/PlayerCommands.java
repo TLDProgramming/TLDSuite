@@ -107,26 +107,21 @@ public class PlayerCommands {
 			BufferedReader br = null;
 			try {
 				br = new BufferedReader(new FileReader(file));
-			} catch (FileNotFoundException e1) {
-				plugin.getLogger().warning(lib.error);
-				e1.printStackTrace();
-			}
-			String line;
-			try {
+
+				String line;
+
 				while ((line = br.readLine()) != null) {
 					player.sendMessage(line);
 				}
+				br.close();
+			} catch (FileNotFoundException e1) {
+				plugin.getLogger().warning(lib.error);
+				e1.printStackTrace();
 			} catch (IOException e) {
 				plugin.getLogger().warning(lib.error);
 				e.printStackTrace();
 			} catch (NullPointerException e1) {
 				source.sendMessage("You have no notes to read, try adding some with \"/Notes add <note>\"");
-			}
-			try {
-				br.close();
-			} catch (IOException e) {
-				plugin.getLogger().warning(lib.error);
-				e.printStackTrace();
 			}
 
 		}

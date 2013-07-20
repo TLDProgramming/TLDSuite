@@ -12,11 +12,11 @@ import org.spout.api.event.entity.EntityInteractEntityEvent;
 import org.spout.vanilla.component.entity.misc.Effects;
 import org.spout.vanilla.component.entity.misc.Health;
 import org.spout.vanilla.component.entity.misc.Level;
-import org.spout.vanilla.component.entity.substance.projectile.Snowball;
 import org.spout.vanilla.data.effect.EntityEffect;
 import org.spout.vanilla.data.effect.EntityEffectType;
 
 import com.github.thelonedevil.TLDSpells.TLDSpellsPlugin;
+import com.github.thelonedevil.TLDSpells.Spells.entity.Snowball;
 import com.github.thelonedevil.TLDSpells.event.PlayerCastSpellEvent;
 
 public class IceBolt extends Bolt implements Listener {

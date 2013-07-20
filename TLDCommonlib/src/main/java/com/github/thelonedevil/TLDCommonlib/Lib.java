@@ -17,8 +17,8 @@ import org.spout.cereal.config.ConfigurationException;
 import org.spout.cereal.config.yaml.YamlConfiguration;
 
 public class Lib extends Plugin {
-	
-	//config
+
+	// config
 	public final String configPath = "plugins/TLDCommonLib/config.yml";
 	private YamlConfiguration config;
 	public List<String> Quotes;
@@ -40,15 +40,15 @@ public class Lib extends Plugin {
 	public int reserved;
 	public HashMap<String, String> factions = new HashMap<String, String>();
 	public String dateformat;
-	
-	//other
+	public HashMap<String, Integer> factionsclaims = new HashMap<String,Integer>();
+
+	// other
 	public String logged = "Plugin has been ";
 	public String error = "An error has happened...... incoming stack trace....";
 	private Data data = new Data(this);
 	private DataBase sql = new DataBase(this);
 	public static Statement statement;
 	public static Connection connection;
-
 
 	@Override
 	public void onLoad() {
@@ -57,7 +57,6 @@ public class Lib extends Plugin {
 
 	}
 
-	
 	@Override
 	public void onEnable() {
 		libFolder.mkdirs();
@@ -80,15 +79,15 @@ public class Lib extends Plugin {
 			e.printStackTrace();
 			getLogger().log(Level.INFO, "Error handlinmg config.yml");
 		}
-		//database
+		// database
 		try {
 			File file = new File("plugins/TLDCommonLib/data.sqlite");
 			file.createNewFile();
 			connection = sql.connect("plugins/TLDCommonLib/data.sqlite");
 			statement = sql.state(connection, 30);
 			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
-			sql.createTable(statement, "FactionClaims","Faction", "string", "x","int","y","int","z","int");
-			data.factionsdat();
+			sql.createTable(statement, "FactionClaims", "Faction", "string", "x", "int", "y", "int", "z", "int");
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -100,8 +99,8 @@ public class Lib extends Plugin {
 		}
 		// register listener
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
-		
-		//data loading
+
+		// data loading
 		data.loginMessages();
 		data.notes();
 		data.rules();
@@ -109,6 +108,7 @@ public class Lib extends Plugin {
 		data.reserve();
 		data.randomQuote();
 		data.dateformat();
+		data.factions();
 
 		getLogger().info(logged + "Enabled!");
 	}
@@ -156,7 +156,7 @@ public class Lib extends Plugin {
 		instance = plugin;
 	}
 
-	public  Lib getInstance() {
+	public Lib getInstance() {
 		return instance;
 	}
 }

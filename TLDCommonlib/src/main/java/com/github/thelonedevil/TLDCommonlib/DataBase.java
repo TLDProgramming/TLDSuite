@@ -47,6 +47,11 @@ public class DataBase {
 		statement.executeUpdate("create table if not exists " + table + " (" + column_name1 + " " + data_type1 + ", " + column_name2 + " " + data_type2 + ", " + column_name3 + " " + data_type3 + ", "
 				+ column_name4 + " " + data_type4 + ")");
 	}
+	void createTable(Statement statement, String table, String column_name1, String data_type1, String column_name2, String data_type2, String column_name3, String data_type3, String column_name4,
+			String data_type4, String column_name5, String data_type5) throws SQLException {
+		statement.executeUpdate("create table if not exists " + table + " (" + column_name1 + " " + data_type1 + ", " + column_name2 + " " + data_type2 + ", " + column_name3 + " " + data_type3 + ", "
+				+ column_name4 + " " + data_type4+", " + column_name5 + " " + data_type5 + ")");
+	}
 
 	/*
 	 * statement.executeUpdate("drop table if exists person");

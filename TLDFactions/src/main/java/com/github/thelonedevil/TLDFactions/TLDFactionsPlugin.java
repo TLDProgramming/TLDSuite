@@ -6,7 +6,10 @@ package com.github.thelonedevil.TLDFactions;
 
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
+import org.spout.api.plugin.services.ProtectionService;
+import org.spout.api.plugin.services.ServiceManager;
 
+import com.github.thelonedevil.TLDFactions.Protection.service;
 import com.github.thelonedevil.TLDFactions.command.TLDFactionsBaseCommand;
 import com.github.thelonedevil.TLDFactions.command.TLDFactionsCommands;
 
@@ -29,6 +32,8 @@ public class TLDFactionsPlugin extends Plugin {
 
 		// Register Events
 		getEngine().getEventManager().registerEvents(new TLDFactionsListener(this), this);
+		
+		getEngine().getServiceManager().register(ProtectionService.class, new service(), this, ServiceManager.ServicePriority.High);
 	}
 
 	@Override

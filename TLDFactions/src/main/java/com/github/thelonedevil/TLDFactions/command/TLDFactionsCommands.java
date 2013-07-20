@@ -17,13 +17,15 @@ import org.spout.api.command.annotated.Permissible;
 import org.spout.api.command.filter.PlayerFilter;
 import org.spout.api.entity.Player;
 import org.spout.api.exception.CommandException;
+import org.spout.api.geo.Protection;
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.geo.discrete.Point;
-
 import com.github.thelonedevil.TLDCommonlib.DataBase;
 import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDFactions.TLDFactionsPlugin;
+import com.github.thelonedevil.TLDFactions.Protection.Protect;
+import com.github.thelonedevil.TLDFactions.Protection.service;
 
 /**
  * Provides an example of a class to hold commands.
@@ -63,6 +65,7 @@ public class TLDFactionsCommands {
 				String update = "UPDATE Factions SET Faction='" + faction + "', " + "Rank='Founder' WHERE Player='" + name + "' ";
 				Lib.statement.executeUpdate(update);
 				lib.factions.put(faction, motto);
+				lib.factionsclaims.put(faction, 0);
 				source.sendMessage("You have Founded the Faction " + faction + ".");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -201,6 +204,7 @@ public class TLDFactionsCommands {
 
 			}
 			if (Faction != "null") {
+				int amount = lib.factionsclaims.get(Faction);
 				int x = args.popInteger("x");
 				int y = args.popInteger("y");
 				int z = args.popInteger("z");
@@ -211,7 +215,7 @@ public class TLDFactionsCommands {
 				List<Block> blocksnew = getBlocks(max, min, w);
 				List<Point> pointsnew = getPoints(blocksnew);
 				try {
-					String query1 = "SELECT Faction, Blocks FROM FactionClaims";
+					String query1 = "SELECT Faction,amount,x,y,z FROM FactionClaims";
 					ResultSet rs = DataBase.rs(Lib.statement, query1);
 					List<Point> points = new ArrayList<Point>();
 					while (rs.next()) {
@@ -229,6 +233,11 @@ public class TLDFactionsCommands {
 					List<Integer> y2 = getYs(points1);
 					List<Integer> z2 = getZs(points1);
 					addCoods(x2, y2, z2, Faction);
+					int newamount = amount++;
+					String faction = Faction+":"+newamount; 
+					Protection protect = new Protect(faction, w, point, x);
+					plugin.getEngine().getServiceManager().getRegistration(service.class).getProvider().addProtection(protect);
+					lib.factionsclaims.put(Faction, newamount);
 
 					rs.close();
 				} catch (SQLException e) {

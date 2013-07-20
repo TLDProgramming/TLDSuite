@@ -48,7 +48,7 @@ public class PlayerCommands {
 			if (target == null) {
 				source.sendMessage( "Player is not online!");
 				return;
-			} else if (target != null && quote1[0] != null) {
+			} else if (quote1[0] != null) {
 				last = quote1[0];
 				target.sendMessage(last);
 			} else if (quote1[0] == null) {
