@@ -22,22 +22,49 @@ Complete collection of TLD plugins for the Spout voxel game platform
  
 
 #####Using in development
-To use in your own plugin devlopment add these to your pom.xml
+To use in your own plugin devlopment add this to your pom.xml
 
 ```XML
-  <repository>
-    <id>TLDcommonlib</id>
-    <url>http://nexus.justin-wiblin.tk:8081</url>
-  </repository>
-  
-```
-```XML
-  <dependency>
-    <groupId>com.github.thelonedevil</groupId>
-    <artifactId>TLDCommonlib</artifactId>
-    <version>1.3-SNAPSHOT</version>
-    <scope>provided</scope>
-  </dependency>
+    <!-- Repositories -->
+    <repositories>
+
+        <!-- Spout's Maven Repository -->
+        <repository>
+            <id>spout-repo</id>
+            <url>http://nexus.spout.org/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <!-- TLD's Maven Repository  -->
+        <repository>
+            <id>TLDcommonlib</id>
+            <url>http://nexus.justin-wiblin.tk:8081</url>
+        </repository>
+
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+
+        <!-- The Spout API -->
+        <dependency>
+            <groupId>org.spout</groupId>
+            <artifactId>spoutapi</artifactId>
+            <version>${spoutVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- TLDCommonlib -->
+        <dependency>
+            <groupId>com.github.thelonedevil</groupId>
+            <artifactId>TLDCommonlib</artifactId>
+            <version>1.3-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 ```
 ***
 ####TLDAgeChecker
