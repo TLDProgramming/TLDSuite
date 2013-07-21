@@ -1,7 +1,13 @@
 #TLDSuite
+
 ##Overview
 Complete collection of TLD plugins for the Spout voxel game platform
 ***
+
+###License
+This software is licensed under the LGPL version 3, a copy of which is included in License.txt
+***
+
 ###Modules
 * TLDCommonlib
 * TLDAgeChecker
