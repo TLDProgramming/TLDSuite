@@ -16,17 +16,23 @@ public class Quoter extends Plugin {
 
 	@Override
 	public void onEnable() {
-		// Commands
-		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this));
+		if (getEngine().getPluginManager().getPlugin("Vanilla") == null) {
+			getLogger().info("Vanilla plugin not found, disabling.");
+			getEngine().getPluginManager().disablePlugin(this);
+		} else {
+			// Commands
+			AnnotatedCommandExecutorFactory.create(new PlayerCommands(this));
 
-		getEngine().getEventManager().registerEvents(new EListener(this), this);
-		
+			// Listener
+			getEngine().getEventManager().registerEvents(new EListener(this), this);
+
+		}
 	}
 
 	@Override
 	public void onDisable() {
 	}
-	
+
 	private static void setInstance(Quoter plugin) {
 		instance = plugin;
 	}

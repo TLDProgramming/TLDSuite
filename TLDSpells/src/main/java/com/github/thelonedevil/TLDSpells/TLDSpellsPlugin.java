@@ -29,20 +29,25 @@ public class TLDSpellsPlugin extends Plugin {
 
 	@Override
 	public void onEnable() {
-		// Register Base Command (/command)
-		AnnotatedCommandExecutorFactory.create(new TLDSpellsBaseCommand(this));
-		// Register Commands under Base Command (/command command)
-		AnnotatedCommandExecutorFactory.create(new TLDSpellsCommands(this), getEngine().getCommandManager().getCommand("TLDSpells"));
-		AnnotatedCommandExecutorFactory.create(new BaseCastCommand(this), getEngine().getCommandManager().getCommand("TLDSpells"));
-		AnnotatedCommandExecutorFactory.create(new CastCommands(this), getEngine().getCommandManager().getCommand("Cast"));
+		if (getEngine().getPluginManager().getPlugin("Vanilla") == null) {
+			getLogger().info("Vanilla plugin not found, disabling.");
+			getEngine().getPluginManager().disablePlugin(this);
+		} else {
+			// Register Base Command (/command)
+			AnnotatedCommandExecutorFactory.create(new TLDSpellsBaseCommand(this));
+			// Register Commands under Base Command (/command command)
+			AnnotatedCommandExecutorFactory.create(new TLDSpellsCommands(this), getEngine().getCommandManager().getCommand("TLDSpells"));
+			AnnotatedCommandExecutorFactory.create(new BaseCastCommand(this), getEngine().getCommandManager().getCommand("TLDSpells"));
+			AnnotatedCommandExecutorFactory.create(new CastCommands(this), getEngine().getCommandManager().getCommand("Cast"));
 
-		// Register Events
-		getEngine().getEventManager().registerEvents(new TLDSpellsListener(this), this);
-		getEngine().getEventManager().registerEvents(new IceBolt(this), this);
-		getEngine().getEventManager().registerEvents(new FireBolt(this), this);
-		getEngine().getEventManager().registerEvents(new HealingBolt(this), this);
+			// Register Events
+			getEngine().getEventManager().registerEvents(new TLDSpellsListener(this), this);
+			getEngine().getEventManager().registerEvents(new IceBolt(this), this);
+			getEngine().getEventManager().registerEvents(new FireBolt(this), this);
+			getEngine().getEventManager().registerEvents(new HealingBolt(this), this);
 
-		getLogger().info("enabled.");
+			getLogger().info("enabled.");
+		}
 	}
 
 	@Override
