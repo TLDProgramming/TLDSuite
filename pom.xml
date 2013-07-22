@@ -20,7 +20,6 @@
         <module>TLDAgeChecker</module>
         <module>TLDTrains</module>
 		<module>distribution</module>
-    <module>TLDTrains</module>
   </modules>
 <distributionManagement>
         <snapshotRepository>
