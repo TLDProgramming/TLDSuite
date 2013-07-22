@@ -40,7 +40,9 @@ public class Lib extends Plugin {
 	public int reserved;
 	public HashMap<String, String> factions = new HashMap<String, String>();
 	public String dateformat;
-	public HashMap<String, Integer> factionsclaims = new HashMap<String,Integer>();
+	public HashMap<String, Integer> factionsclaims = new HashMap<String, Integer>();
+
+	public HashMap<String, TrainsMap> trainowners = new HashMap<String, TrainsMap>();
 
 	// other
 	public String logged = "Plugin has been ";
