@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDTrains. It also has a hard 
+ * This file is part of the Spout plugin TLDTrains. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDTrains;
@@ -13,12 +13,24 @@ import org.spout.api.entity.Player;
 import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.entity.EntityInteractEntityEvent;
+import org.spout.api.event.player.Action;
+import org.spout.api.event.player.PlayerInteractBlockEvent;
 import org.spout.api.event.player.PlayerInteractEntityEvent;
+import org.spout.api.geo.World;
+import org.spout.api.geo.cuboid.Block;
+import org.spout.api.geo.discrete.Point;
+import org.spout.api.inventory.ItemStack;
+import org.spout.api.inventory.Slot;
+import org.spout.api.material.Material;
 import org.spout.vanilla.component.entity.substance.vehicle.minecart.MinecartBase;
+import org.spout.vanilla.material.VanillaMaterials;
+import org.spout.vanilla.util.PlayerUtil;
 
 import com.github.thelonedevil.TLDCommonlib.Lib;
 import com.github.thelonedevil.TLDCommonlib.Train;
 import com.github.thelonedevil.TLDCommonlib.TrainsMap;
+import com.github.thelonedevil.TLDTrains.entity.Minecart;
+import com.github.thelonedevil.TLDTrains.entity.PoweredMinecart;
 
 /**
  * Provides an example of an event listener class.
@@ -69,13 +81,48 @@ public class TLDTrainsListener implements Listener {
 					} else if (carts.contains(key1)) {
 						train.addCart(key);
 						tmap.replace(num, train);
-					} else if (!carts.contains(key) && !carts.contains(key1)){
+					} else if (!carts.contains(key) && !carts.contains(key1)) {
 						train.createTrain(key, key1);
 					}
 
 				}
 				lib.trainowners.put(name, tmap);
 			}
+		}
+	}
+
+	@EventHandler
+	public void onCartPlace(PlayerInteractBlockEvent event) {
+		Player p = event.getEntity();
+		Action click = event.getAction();
+		World w = p.getWorld();
+		switch (click) {
+		case RIGHT_CLICK:
+			Point point = event.getPoint();
+			Block block = event.getInteracted();
+			if (block.isMaterial(VanillaMaterials.RAIL) || block.isMaterial(VanillaMaterials.RAIL_ACTIVATOR) || block.isMaterial(VanillaMaterials.RAIL_DETECTOR)
+					|| block.isMaterial(VanillaMaterials.RAIL_POWERED)) {
+				int y = point.getBlockY() + 1;
+				int x = point.getBlockX();
+				int z = point.getBlockZ();
+				point.add(x, y, z);
+				Material material = PlayerUtil.getHeldSlot(p).get().getMaterial();
+				if (material.isMaterial(VanillaMaterials.MINECART)) {
+					w.createEntity(point, Minecart.class);
+
+				} else if (material.isMaterial(VanillaMaterials.MINECART_CHEST)) {
+
+				} else if (material.isMaterial(VanillaMaterials.MINECART_FURNACE)) {
+					w.createEntity(point, PoweredMinecart.class);
+
+				} else if (material.isMaterial(VanillaMaterials.MINECART_HOPPER)) {
+					
+				} else if (material.isMaterial(VanillaMaterials.MINECART_TNT)) {
+					
+				}
+
+			}
+
 		}
 	}
 }

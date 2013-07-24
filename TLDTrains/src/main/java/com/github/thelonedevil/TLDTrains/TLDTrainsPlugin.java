@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDTrains. It also has a hard 
+ * This file is part of the Spout plugin TLDTrains. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDTrains;
@@ -15,7 +15,6 @@ import com.github.thelonedevil.TLDTrains.command.TLDTrainsCommands;
  */
 public class TLDTrainsPlugin extends Plugin {
 	private static TLDTrainsPlugin instance;
-
 
 	@Override
 	public void onLoad() {
