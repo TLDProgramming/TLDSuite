@@ -16,7 +16,7 @@ import org.spout.vanilla.data.effect.type.SmokeEffect;
 import org.spout.vanilla.event.world.PlayParticleEffectEvent;
 
 import com.github.thelonedevil.TLDSpells.TLDSpellsPlugin;
-import com.github.thelonedevil.TLDSpells.Spells.entity.Fireball;
+import com.github.thelonedevil.TLDSpells.Spells.entity.FireBoltEntity;
 import com.github.thelonedevil.TLDSpells.event.PlayerCastSpellEvent;
 
 public class FireBolt extends Bolt implements Listener {
@@ -29,7 +29,7 @@ public class FireBolt extends Bolt implements Listener {
 	HashMap<UUID, Player> list = new HashMap<UUID, Player>();
 
 	public void cast(Player p) {
-		Entity s = Bolt.cast(p, Fireball.class);
+		Entity s = Bolt.cast(p, FireBoltEntity.class);
 		list.put(s.getUID(), p);
 		PlayerCastSpellEvent event = new PlayerCastSpellEvent(p, this);
 		plugin.getEngine().getEventManager().callEvent(event);
@@ -50,7 +50,7 @@ public class FireBolt extends Bolt implements Listener {
 		if (list.containsKey(e)) {
 			Entity hit = event.getInteracted();
 				hit.get(Health.class).damage(amount);
-				Point loc = hit.getScene().getPosition();
+				Point loc = hit.getPhysics().getPosition();
 				GeneralEffect effect = new SmokeEffect(1);
 				PlayParticleEffectEvent particle = new PlayParticleEffectEvent(loc, effect, 0);
 				plugin.getEngine().getEventManager().callEvent(particle);

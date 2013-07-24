@@ -8,7 +8,6 @@ import org.spout.api.entity.Player;
 import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.entity.EntityInteractEntityEvent;
-
 import org.spout.vanilla.component.entity.misc.Effects;
 import org.spout.vanilla.component.entity.misc.Health;
 import org.spout.vanilla.component.entity.misc.Level;
@@ -16,7 +15,7 @@ import org.spout.vanilla.data.effect.EntityEffect;
 import org.spout.vanilla.data.effect.EntityEffectType;
 
 import com.github.thelonedevil.TLDSpells.TLDSpellsPlugin;
-import com.github.thelonedevil.TLDSpells.Spells.entity.Snowball;
+import com.github.thelonedevil.TLDSpells.Spells.entity.IceBoltEntity;
 import com.github.thelonedevil.TLDSpells.event.PlayerCastSpellEvent;
 
 public class IceBolt extends Bolt implements Listener {
@@ -29,7 +28,7 @@ public class IceBolt extends Bolt implements Listener {
 	HashMap<UUID, Player> list = new HashMap<UUID, Player>();
 
 	public void cast(Player p) {
-		Entity s = Bolt.cast(p, Snowball.class);
+		Entity s = Bolt.cast(p, IceBoltEntity.class);
 		list.put(s.getUID(), p);
 		PlayerCastSpellEvent event = new PlayerCastSpellEvent(p, this);
 		plugin.getEngine().getEventManager().callEvent(event);

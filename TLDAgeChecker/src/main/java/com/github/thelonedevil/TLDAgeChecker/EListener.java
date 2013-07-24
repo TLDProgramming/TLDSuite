@@ -35,7 +35,7 @@ public class EListener implements Listener {
 	public void onMove(PlayerInputEvent event) {
 		Player p = event.getPlayer();
 		String name = p.getName();
-		Point loc = p.getScene().getPosition();
+		Point loc = p.getPhysics().getPosition();
 		if (TLDAgeChecker.DOB.get(name) == null){
 			p.teleport(loc);
 		}

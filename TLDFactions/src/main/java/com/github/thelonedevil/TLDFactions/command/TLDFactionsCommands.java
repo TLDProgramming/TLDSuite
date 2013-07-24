@@ -208,7 +208,7 @@ public class TLDFactionsCommands {
 				int x = args.popInteger("x");
 				int y = args.popInteger("y");
 				int z = args.popInteger("z");
-				Point point = p.getScene().getPosition();
+				Point point = p.getPhysics().getPosition();
 				Point max = point.add(x, y, z);
 				Point min = point.subtract(x, y, z);
 				World w = point.getWorld();
