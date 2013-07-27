@@ -63,10 +63,16 @@ public class TLDRafflePlugin extends Plugin {
 		long last = 0;
 		long now;
 		long dif = 0;
-		String[] ids = lib.raffleprize.split(":"); 
-		short id = Short.parseShort(ids[0]);
-		short data= Short.parseShort(ids[1]);
-		Material material = Material.get(id, data);
+		Material material;
+		if(lib.raffleprize.contains(":")){
+			String[] ids = lib.raffleprize.split(":"); 
+			short id = Short.parseShort(ids[0]);
+			short data= Short.parseShort(ids[1]);
+			material = Material.get(id, data);
+		}else {
+			short id = Short.parseShort(lib.raffleprize);
+			material = Material.get(id);
+		}
 		ItemStack prize = new ItemStack(material, 1);
 		do {
 			now = System.currentTimeMillis();
