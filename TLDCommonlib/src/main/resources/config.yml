@@ -42,3 +42,7 @@ Notes:
     amount: 64
 AFK:
     IdleTime: 5
+DateFormat: DD/MM/YYYY
+Raffle:
+    Interval: 30
+    Prize: 264:0
