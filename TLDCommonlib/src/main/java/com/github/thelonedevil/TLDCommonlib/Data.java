@@ -15,12 +15,14 @@ import java.util.logging.Level;
 import org.spout.api.Server;
 import org.spout.cereal.config.ConfigurationNode;
 
+
 public class Data {
 	private Lib plugin;
 
 	public Data(Lib instance) {
 		this.plugin = instance;
 	}
+
 	void extract(String path, String name) throws IOException {
 		JarFile jarfile = new JarFile(plugin.getFile());
 		Enumeration<JarEntry> enu = jarfile.entries();
@@ -50,7 +52,6 @@ public class Data {
 		jarfile.close();
 	}
 
-
 	public void loginMessages() {
 		plugin.firstlogin = plugin.FetchConfig().getNode("Logins.First").getString();
 		plugin.otherlogin = plugin.FetchConfig().getNode("Logins.Other").getString();
@@ -77,13 +78,21 @@ public class Data {
 		plugin.reserved = ((Server) plugin.getEngine()).getMaxPlayers() - (plugin.reserve);
 
 	}
-	public void factions(){
+
+	public void factions() {
 		factionsdat();
 		claimsdat();
 	}
+
+	public void raffle() {
+		plugin.interval = plugin.FetchConfig().getNode("Raffle.Interval").getLong() * 60000;
+		plugin.raffleprize = plugin.FetchConfig().getNode("Raffle.Prize").getPath();
+
+	}
+
 	public void dateformat() {
 		plugin.dateformat = plugin.FetchConfig().getNode("DateFormat").getString("DD/MM/YYYY");
-		
+
 	}
 
 	public void randomQuote() {
@@ -223,12 +232,13 @@ public class Data {
 		}
 
 	}
+
 	@SuppressWarnings("unchecked")
 	void claimsdat() {
 		File afkdat = new File("plugins/TLDCommonlib/FactionClaims.dat");
 		if (afkdat.exists()) {
 			try {
-				plugin.factionsclaims= (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/FactionClaims.dat");
+				plugin.factionsclaims = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/FactionClaims.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -253,6 +263,5 @@ public class Data {
 		}
 
 	}
-
 
 }

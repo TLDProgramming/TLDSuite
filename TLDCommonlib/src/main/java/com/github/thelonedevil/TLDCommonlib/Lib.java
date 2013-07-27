@@ -41,6 +41,8 @@ public class Lib extends Plugin {
 	public HashMap<String, String> factions = new HashMap<String, String>();
 	public String dateformat;
 	public HashMap<String, Integer> factionsclaims = new HashMap<String,Integer>();
+	public long interval;
+	public String raffleprize;
 
 	// other
 	public String logged = "Plugin has been ";
@@ -101,6 +103,8 @@ public class Lib extends Plugin {
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
 
 		// data loading
+		List<Plugin> plugins = getEngine().getPluginManager().getPlugins();
+		
 		data.loginMessages();
 		data.notes();
 		data.rules();
@@ -109,6 +113,7 @@ public class Lib extends Plugin {
 		data.randomQuote();
 		data.dateformat();
 		data.factions();
+		data.raffle();
 
 		getLogger().info(logged + "Enabled!");
 	}
