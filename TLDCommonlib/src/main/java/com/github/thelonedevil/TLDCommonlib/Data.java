@@ -21,6 +21,7 @@ public class Data {
 	public Data(Lib instance) {
 		this.plugin = instance;
 	}
+
 	void extract(String path, String name) throws IOException {
 		JarFile jarfile = new JarFile(plugin.getFile());
 		Enumeration<JarEntry> enu = jarfile.entries();
@@ -35,7 +36,7 @@ public class Data {
 						fl.getParentFile().mkdirs();
 						fl = new File(path);
 						fl.createNewFile();
-						plugin.getLogger().log(Level.INFO, "Generating config.yml...");
+						plugin.getLogger().log(Level.INFO, "Generating " + name);
 						InputStream is = jarfile.getInputStream(je);
 						FileOutputStream fo = new FileOutputStream(path);
 						while (is.available() > 0) {
@@ -49,7 +50,6 @@ public class Data {
 		}
 		jarfile.close();
 	}
-
 
 	public void loginMessages() {
 		plugin.firstlogin = plugin.FetchConfig().getNode("Logins.First").getString();
@@ -77,13 +77,15 @@ public class Data {
 		plugin.reserved = ((Server) plugin.getEngine()).getMaxPlayers() - (plugin.reserve);
 
 	}
-	public void factions(){
+
+	public void factions() {
 		factionsdat();
 		claimsdat();
 	}
+
 	public void dateformat() {
 		plugin.dateformat = plugin.FetchConfig().getNode("DateFormat").getString("DD/MM/YYYY");
-		
+
 	}
 
 	public void randomQuote() {
@@ -223,12 +225,13 @@ public class Data {
 		}
 
 	}
+
 	@SuppressWarnings("unchecked")
 	void claimsdat() {
 		File afkdat = new File("plugins/TLDCommonlib/FactionClaims.dat");
 		if (afkdat.exists()) {
 			try {
-				plugin.factionsclaims= (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/FactionClaims.dat");
+				plugin.factionsclaims = (HashMap<String, Integer>) SLAPI.load("plugins/TLDCommonlib/FactionClaims.dat");
 			} catch (Exception e) {
 				plugin.errorLogger();
 				e.printStackTrace();
@@ -253,6 +256,5 @@ public class Data {
 		}
 
 	}
-
 
 }

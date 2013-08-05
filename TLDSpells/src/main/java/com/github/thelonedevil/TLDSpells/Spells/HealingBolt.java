@@ -9,7 +9,6 @@ import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.entity.EntityInteractEntityEvent;
 import org.spout.api.geo.discrete.Point;
-
 import org.spout.vanilla.component.entity.misc.Health;
 import org.spout.vanilla.component.entity.misc.Level;
 import org.spout.vanilla.component.entity.substance.projectile.Snowball;

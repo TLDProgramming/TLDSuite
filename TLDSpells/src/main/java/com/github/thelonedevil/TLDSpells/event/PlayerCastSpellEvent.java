@@ -3,12 +3,12 @@ package com.github.thelonedevil.TLDSpells.event;
 import org.spout.api.entity.Player;
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.player.PlayerEvent;
+import org.spout.api.event.player.AbstractPlayerEvent;
 import org.spout.vanilla.component.entity.misc.Level;
 
 import com.github.thelonedevil.TLDSpells.Spells.Bolt;
 
-public class PlayerCastSpellEvent extends PlayerEvent implements Cancellable {
+public class PlayerCastSpellEvent extends AbstractPlayerEvent implements Cancellable {
 	private static final HandlerList handlers = new HandlerList();
 	
 	Bolt spell;
@@ -35,7 +35,7 @@ public class PlayerCastSpellEvent extends PlayerEvent implements Cancellable {
 	}
 	
 	public Level getLevel(){
-		return p.get(Level.class);
+		return this.p.get(Level.class);
 	}
 
 	@Override
