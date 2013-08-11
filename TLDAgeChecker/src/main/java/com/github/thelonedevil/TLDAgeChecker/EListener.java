@@ -37,7 +37,7 @@ public class EListener implements Listener {
 		String name = p.getName();
 		Point loc = p.getPhysics().getPosition();
 		if (TLDAgeChecker.DOB.get(name) == null){
-			p.teleport(loc);
+			p.getPhysics().setPosition(loc);
 		}
 	}
 }

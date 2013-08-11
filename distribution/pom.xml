@@ -22,37 +22,37 @@
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDWelcomer</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDRules</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDQuotes</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDFactions</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDAfk</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDReserve</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDNotes</artifactId>
-			<version>1</version>
+			<version>1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
