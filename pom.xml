@@ -19,7 +19,6 @@
         <module>TLDSpells</module>
         <module>TLDAgeChecker</module>
 		<module>distribution</module>
-    <module>TLDContainerOwnership</module>
   </modules>
 <distributionManagement>
         <snapshotRepository>
