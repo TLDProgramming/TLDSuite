@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.thelonedevil</groupId>
@@ -9,27 +10,27 @@
 
 	<modules>
 		<module>TLDCommonlib</module>
-        <module>TLDAfk</module> 
+		<module>TLDAfk</module>
 		<module>TLDFactions</module>
 		<module>TLDNotes</module>
 		<module>TLDQuotes</module>
 		<module>TLDReserve</module>
 		<module>TLDRules</module>
 		<module>TLDWelcomer</module>
-        <module>TLDSpells</module>
-        <module>TLDAgeChecker</module>
+		<module>TLDSpells</module>
+		<module>TLDAgeChecker</module>
 		<module>distribution</module>
-  </modules>
-<distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://192.168.1.76:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>release</id>
-            <url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
-        </repository>
-    </distributionManagement>
+	</modules>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://192.168.1.76:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>release</id>
+			<url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -45,26 +46,29 @@
 					</descriptors>
 				</configuration>
 			</plugin>
-                  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.2</version>
-        <executions>
-          <execution>
-            <id>enforce-versions</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireJavaVersion>
-                  <version>1.7</version>
-                </requireJavaVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.0.0</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>1.7</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
