@@ -9,6 +9,7 @@ This software is licensed under the LGPL version 3, a copy of which is included 
 ***
 
 ###Binary Downloads
+https://drone.io/github.com/TLDProgramming/TLDSuite/files
 [![Build Status](https://drone.io/github.com/TLDProgramming/TLDSuite/status.png)](https://drone.io/github.com/TLDProgramming/TLDSuite/latest)
 ***
 
