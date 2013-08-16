@@ -8,6 +8,10 @@ Complete collection of TLD plugins for the Spout voxel game platform
 This software is licensed under the LGPL version 3, a copy of which is included in License.txt
 ***
 
+###Binary Downloads
+[![Build Status](https://drone.io/github.com/TLDProgramming/TLDSuite/status.png)](https://drone.io/github.com/TLDProgramming/TLDSuite/latest)
+***
+
 ###Modules
 * TLDCommonlib
 * TLDAgeChecker
@@ -58,8 +62,8 @@ To use in your own plugin devlopment add this to your pom.xml
         <!-- The Spout API -->
         <dependency>
             <groupId>org.spout</groupId>
-            <artifactId>spoutapi</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <artifactId>spout-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         
