@@ -40,13 +40,13 @@ public class Lib extends Plugin {
 	public int reserved;
 	public HashMap<String, String> factions = new HashMap<String, String>();
 	public String dateformat;
-	public HashMap<String, Integer> factionsclaims = new HashMap<String,Integer>();
+	public HashMap<String, Integer> factionsclaims = new HashMap<String, Integer>();
 
 	// other
 	public String logged = "Plugin has been ";
 	public String error = "An error has happened...... incoming stack trace....";
 	private Data data = new Data(this);
-	private DataBase sql = new DataBase(this);
+	private DataBase sql = new DataBase();
 	public static Statement statement;
 	public static Connection connection;
 
@@ -87,6 +87,10 @@ public class Lib extends Plugin {
 			statement = sql.state(connection, 30);
 			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
 			sql.createTable(statement, "FactionClaims", "Faction", "string", "x", "int", "y", "int", "z", "int");
+			sql.createTable(statement, "ScapeSkills","Player","String", "HitPoints", "BIGINT", "Attack", "BIGINT", "Strength", "BIGINT", "Defence", "BIGINT", "Magic", "BIGINT", "Range", "BIGINT", "WoodCutting",
+					"BIGINT", "Prayer", "BIGINT", "Mining", "BIGINT", "Smithing", "BIGINT", "Agility", "BIGINT", "Fishing", "BIGINT", "FireMaking", "BIGINT", "Fletching", "BIGINT", "Crafting",
+					"BIGINT", "Herblore", "BIGINT", "Farming", "BIGINT", "Hunting", "BIGINT", "Construction", "BIGINT", "Slayer", "BIGINT", "Cooking", "BIGINT", "Dungeoneering",
+					"BIGINT", "Runecrafting", "BIGINT", "Thieving", "BIGINT", "Summoning", "BIGINT");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
