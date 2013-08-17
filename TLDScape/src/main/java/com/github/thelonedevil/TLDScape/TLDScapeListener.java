@@ -7,6 +7,7 @@ package com.github.thelonedevil.TLDScape;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.spout.api.entity.Player;
@@ -23,7 +24,7 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  */
 public class TLDScapeListener implements Listener {
 	private TLDScapePlugin plugin;
-	private DataBase databsae = new DataBase();
+	private DataBase database = new DataBase();
 
 	public TLDScapeListener(TLDScapePlugin instance) {
 		this.plugin = instance;
@@ -40,24 +41,21 @@ public class TLDScapeListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player p = event.getPlayer();
 		String name = p.getName();
-		String query = "SELECT * FROM Factions;";
-		List<String> pl = new ArrayList<String>();
+		HashMap<String, Object> skills = new HashMap<String, Object>();
 		try {
-			ResultSet rs = DataBase.rs(Lib.statement, query);
-			while (rs.next()) {
-				pl.add(rs.getString("Player"));
-			}
-
-			if (!pl.contains(name)) {
-				String update = "INSERT INTO ScapeSkills (Player, HitPoints) VALUES ('" + name + "', '1154');";
-				try {
-					Lib.statement.executeUpdate(update);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			skills = database.getRow(Lib.statement, "ScapeSkills", name, "Player");
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if(skills.isEmpty()){
+			skills.put("hitpoints", 1154);
+			try {
+				database.updateRow(Lib.statement, "ScapeSkills", name, "Player", skills);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

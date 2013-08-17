@@ -256,10 +256,10 @@ public class DataBase {
 	 * @throws SQLException
 	 */
 
-	public void updateRow(Statement statement, String table, String row_Label, String column, HashMap<String, Object> row) throws SQLException {
+	public void updateRow(Statement statement, String table, String row_Label, String column, HashMap<String, Object> map) throws SQLException {
 		String update = "UPDATE " + table + " SET ";
-		for (String key : row.keySet()) {
-			update = update + key + "=" + row.get(key) + ", ";
+		for (String key : map.keySet()) {
+			update = update + key + "=" + map.get(key) + ", ";
 		}
 		update = update + " WHERE " + column + "='" + row_Label + "' ";
 		statement.executeUpdate(update);
