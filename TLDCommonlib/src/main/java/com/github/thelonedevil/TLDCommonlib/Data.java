@@ -22,6 +22,12 @@ public class Data {
 		this.plugin = instance;
 	}
 
+	/**
+	 * 
+	 * @param path
+	 * @param name
+	 * @throws IOException
+	 */
 	void extract(String path, String name) throws IOException {
 		JarFile jarfile = new JarFile(plugin.getFile());
 		Enumeration<JarEntry> enu = jarfile.entries();

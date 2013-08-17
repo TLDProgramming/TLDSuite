@@ -1,1 +1,0 @@
-This is a welcoming plugin for the spout voxel platform
