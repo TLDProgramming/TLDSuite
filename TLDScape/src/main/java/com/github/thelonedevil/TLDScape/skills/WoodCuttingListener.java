@@ -8,6 +8,13 @@ import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.player.Action;
 import org.spout.api.event.player.PlayerInteractBlockEvent;
+import org.spout.api.geo.cuboid.Block;
+import org.spout.api.inventory.ItemStack;
+import org.spout.api.inventory.Slot;
+import org.spout.api.material.Material;
+import org.spout.vanilla.material.VanillaMaterials;
+import org.spout.vanilla.material.item.tool.Tool;
+import org.spout.vanilla.util.PlayerUtil;
 
 import com.github.thelonedevil.TLDCommonlib.DataBase;
 import com.github.thelonedevil.TLDCommonlib.Lib;
@@ -35,44 +42,51 @@ public class WoodCuttingListener implements Listener {
 			e.printStackTrace();
 		}
 		if (skills != null) {
-			int xp = (Integer) skills.get("WoodCutting");
-			if (xp >= Levels.L1) {
-				//wooden
-			} else if (xp >= Levels.L2) {
-			} else if (xp >= Levels.L3) {
-			} else if (xp >= Levels.L4) {
-			} else if (xp >= Levels.L5) {
-			} else if (xp >= Levels.L6) {
-				//stone
-			} else if (xp >= Levels.L7) {
-			} else if (xp >= Levels.L8) {
-			} else if (xp >= Levels.L9) {
-			} else if (xp >= Levels.L10) {
-			} else if (xp >= Levels.L11) {
-			} else if (xp >= Levels.L12) {
-				//gold
-			} else if (xp >= Levels.L13) {
-			} else if (xp >= Levels.L14) {
-			} else if (xp >= Levels.L15) {
-			} else if (xp >= Levels.L16) {
-			} else if (xp >= Levels.L17) {
-			} else if (xp >= Levels.L18) {
-				//iron
-			} else if (xp >= Levels.L19) {
-			} else if (xp >= Levels.L20) {
-			} else if (xp >= Levels.L21) {
-			} else if (xp >= Levels.L22) {
-			} else if (xp >= Levels.L23) {
-			} else if (xp >= Levels.L24) {
-				//diamond
-			} else if (xp >= Levels.L25) {
-			} else if (xp >= Levels.L26) {
-			} else if (xp >= Levels.L27) {
-			} else if (xp >= Levels.L28) {
-			} else if (xp >= Levels.L29) {
-			} else if (xp >= Levels.L30) {
-				//faster cutting
-			} /*
+			Block block = event.getInteracted();
+			Material material = block.getMaterial();
+			if (material.isMaterial(VanillaMaterials.LOG)) {
+				Slot slot = PlayerUtil.getHeldSlot(p);
+				ItemStack held = slot.get();
+				//TODO sort per tool
+				int xp = (Integer) skills.get("WoodCutting");
+				if (xp >= Levels.L1) {
+					// wooden
+				} else if (xp >= Levels.L2) {
+				} else if (xp >= Levels.L3) {
+				} else if (xp >= Levels.L4) {
+				} else if (xp >= Levels.L5) {
+				} else if (xp >= Levels.L6) {
+					// stone
+				} else if (xp >= Levels.L7) {
+				} else if (xp >= Levels.L8) {
+				} else if (xp >= Levels.L9) {
+				} else if (xp >= Levels.L10) {
+				} else if (xp >= Levels.L11) {
+				} else if (xp >= Levels.L12) {
+					// gold
+				} else if (xp >= Levels.L13) {
+				} else if (xp >= Levels.L14) {
+				} else if (xp >= Levels.L15) {
+				} else if (xp >= Levels.L16) {
+				} else if (xp >= Levels.L17) {
+				} else if (xp >= Levels.L18) {
+					// iron
+				} else if (xp >= Levels.L19) {
+				} else if (xp >= Levels.L20) {
+				} else if (xp >= Levels.L21) {
+				} else if (xp >= Levels.L22) {
+				} else if (xp >= Levels.L23) {
+				} else if (xp >= Levels.L24) {
+					// diamond
+				} else if (xp >= Levels.L25) {
+				} else if (xp >= Levels.L26) {
+				} else if (xp >= Levels.L27) {
+				} else if (xp >= Levels.L28) {
+				} else if (xp >= Levels.L29) {
+				} else if (xp >= Levels.L30) {
+					// faster cutting
+				}
+			}/*
 			 * else if (xp >= Levels.L31) {
 			 * p.get(Health.class).setMaxHealth(31.0f); } else if (xp >=
 			 * Levels.L32) { p.get(Health.class).setMaxHealth(32.0f); } else if

@@ -225,7 +225,7 @@ public class DataBase {
 	 * @param table
 	 * @param row_label
 	 * @param column
-	 * @return
+	 * @return A HashMap<Column_label,Value> for the row_label if the row exists, otherwise returns an empty HashMap<String,Object>
 	 * @throws SQLException
 	 */
 	public HashMap<String, Object> getRow(Statement statement, String table, String row_label, String column) throws SQLException {
@@ -252,7 +252,7 @@ public class DataBase {
 	 * @param table
 	 * @param row_Label
 	 * @param column
-	 * @param row
+	 * @param map
 	 * @throws SQLException
 	 */
 

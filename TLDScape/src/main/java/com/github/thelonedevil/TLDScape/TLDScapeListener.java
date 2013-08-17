@@ -4,17 +4,14 @@
  */
 package com.github.thelonedevil.TLDScape;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.spout.api.entity.Player;
 import org.spout.api.event.EventHandler;
+import org.spout.api.event.Listener;
 import org.spout.api.event.player.PlayerChatEvent;
 import org.spout.api.event.player.PlayerJoinEvent;
-import org.spout.api.event.Listener;
 
 import com.github.thelonedevil.TLDCommonlib.DataBase;
 import com.github.thelonedevil.TLDCommonlib.Lib;
@@ -49,7 +46,7 @@ public class TLDScapeListener implements Listener {
 			e.printStackTrace();
 		}
 		if(skills.isEmpty()){
-			skills.put("hitpoints", 1154);
+			skills.put("HitPoints", 1154);
 			try {
 				database.updateRow(Lib.statement, "ScapeSkills", name, "Player", skills);
 			} catch (SQLException e) {
