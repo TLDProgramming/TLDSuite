@@ -17,10 +17,12 @@ public class IceBoltEntity extends Substance implements Projectile {
 		super.onAttached();
 	}
 
+	@Override
 	public Entity getShooter() {
 		return shooter;
 	}
 
+	@Override
 	public void setShooter(Entity shooter) {
 		this.shooter = shooter;
 	}

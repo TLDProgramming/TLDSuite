@@ -71,7 +71,7 @@ public class WoodCuttingListener implements Listener {
 					// TODO sort per tool
 					int xp = (Integer) skills.get("WoodCutting");
 
-					if (Levels.L1 < xp && xp < Levels.L7) {
+					if (Levels.L1 <= xp && xp < Levels.L7) {
 						// wooden
 						if (axe.equalsIgnoreCase("Wood")) {
 							if (xp >= Levels.L1) {
