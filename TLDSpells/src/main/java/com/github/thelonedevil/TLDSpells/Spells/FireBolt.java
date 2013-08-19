@@ -9,6 +9,7 @@ import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.entity.EntityInteractEntityEvent;
 import org.spout.api.geo.discrete.Point;
+import org.spout.vanilla.component.entity.misc.Burn;
 import org.spout.vanilla.component.entity.misc.Health;
 import org.spout.vanilla.component.entity.misc.Level;
 import org.spout.vanilla.data.effect.GeneralEffect;
@@ -36,7 +37,7 @@ public class FireBolt extends Bolt implements Listener {
 	}
 
 	@EventHandler
-	public void icebolt(EntityInteractEntityEvent event) {
+	public void firebolt(EntityInteractEntityEvent event) {
 		UUID e = event.getEntity().getUID();
 		int level = list.get(e).get(Level.class).getLevel();
 		int basedamage = 4;
@@ -54,7 +55,7 @@ public class FireBolt extends Bolt implements Listener {
 				GeneralEffect effect = new SmokeEffect(1);
 				PlayParticleEffectEvent particle = new PlayParticleEffectEvent(loc, effect, 0);
 				plugin.getEngine().getEventManager().callEvent(particle);
-				//TODO ignite entity
+				hit.get(Burn.class).setOnFire(10.0f, true);
 			
 		}
 	}

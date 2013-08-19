@@ -36,7 +36,7 @@ public class HealingBolt extends Bolt implements Listener {
 	}
 
 	@EventHandler
-	public void icebolt(EntityInteractEntityEvent event) {
+	public void healthbolt(EntityInteractEntityEvent event) {
 		UUID e = event.getEntity().getUID();
 		int level = list.get(e).get(Level.class).getLevel();
 		int basedamage = 4;
