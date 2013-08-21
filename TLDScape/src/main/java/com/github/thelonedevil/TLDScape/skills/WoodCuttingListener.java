@@ -68,7 +68,6 @@ public class WoodCuttingListener implements Listener {
 					}
 				}
 				if (axe != null) {
-					// TODO sort per tool
 					int xp = (Integer) skills.get("WoodCutting");
 
 					if (Levels.L1 <= xp && xp < Levels.L7) {
@@ -129,6 +128,7 @@ public class WoodCuttingListener implements Listener {
 						}
 					} else if (xp >= Levels.L30) {
 						if (axe.equalsIgnoreCase("Wood") || axe.equalsIgnoreCase("Stone") || axe.equalsIgnoreCase("Gold") || axe.equalsIgnoreCase("Iron") || axe.equalsIgnoreCase("Diamond")) {
+						//speed up block breaking
 						}
 					}
 				}
