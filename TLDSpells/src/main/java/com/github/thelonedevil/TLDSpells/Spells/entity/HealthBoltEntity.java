@@ -7,12 +7,12 @@ import org.spout.vanilla.protocol.entity.VanillaEntityProtocol;
 import org.spout.vanilla.protocol.entity.object.ObjectEntityProtocol;
 import org.spout.vanilla.protocol.entity.object.ObjectType;
 
-public class FireBoltEntity extends Substance implements Projectile {
+public class HealthBoltEntity extends Substance implements Projectile{
 	private Entity shooter;
-
+	
 	@Override
 	public void onAttached() {
-		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.FIREWORKS_ROCKET); //replace object type with fireball
+		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.POTION); //replace object type with something else
 		setEntityProtocol(pr);
 		super.onAttached();
 	}
@@ -25,6 +25,7 @@ public class FireBoltEntity extends Substance implements Projectile {
 	@Override
 	public void setShooter(Entity shooter) {
 		this.shooter = shooter;
+		
 	}
 
 }
