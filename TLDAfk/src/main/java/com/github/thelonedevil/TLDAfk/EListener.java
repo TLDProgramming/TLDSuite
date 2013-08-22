@@ -14,10 +14,10 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
 public class EListener implements Listener {
 	private TLDAfk plugin;
 	private Lib lib = new Lib();
+
 	public EListener(TLDAfk instance) {
 		this.plugin = instance;
 	}
-
 
 	@EventHandler
 	public void onPlayerKey(PlayerKeyEvent event) {

@@ -34,7 +34,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<currentYear>2013</currentYear>
 		<buildNumber>0</buildNumber>
-		<mainClass>com.github.thelonedevil.TLDWelcomer.Welcomer</mainClass>
+		<mainClass>com.github.thelonedevil.TLDWelcomer.TLDWelcomer</mainClass>
 		<load>startup</load>
 		<!-- The value of this node can be either CLIENT, SERVER, PROXY, or ALL. -->
 		<!-- Unless your server runs on the Spout client, then select SERVER. -->

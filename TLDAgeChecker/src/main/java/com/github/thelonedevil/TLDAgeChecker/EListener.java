@@ -7,6 +7,8 @@ import org.spout.api.event.player.PlayerJoinEvent;
 import org.spout.api.event.player.input.PlayerInputEvent;
 import org.spout.api.geo.discrete.Point;
 
+import com.github.thelonedevil.TLDCommonlib.Lib;
+
 
 public class EListener implements Listener {
 	private TLDAgeChecker plugin;
@@ -15,18 +17,18 @@ public class EListener implements Listener {
 		this.plugin = instance;
 	}
 	static String name;
+	private Lib lib = new Lib();
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		name = player.getName();
-
-		if (TLDAgeChecker.DOB.get(name) == null) {
-			player.sendMessage("Please verify your age by using the command /DOB <Your date of birth goes here in the format DD/MM/YYYY>");
-		} else if (TLDAgeChecker.DOB.get(name) != null) {
-			if (TLDAgeChecker.allowed.get(name) == true){
+		if (lib.DOB.get(name) == null) {
+			player.sendMessage("Please verify your age by using the command /DOB <Your date of birth goes here in the format: " +lib.dateformat+">");
+		} else if (lib.DOB.get(name) != null) {
+			if (lib.allowed.get(name) == true){
 				
-			}else if (TLDAgeChecker.allowed.get(name) == false){
+			}else if (lib.allowed.get(name) == false){
 				player.kick("You are not old enough to play on this server");
 			}
 		}
@@ -36,7 +38,7 @@ public class EListener implements Listener {
 		Player p = event.getPlayer();
 		String name = p.getName();
 		Point loc = p.getPhysics().getPosition();
-		if (TLDAgeChecker.DOB.get(name) == null){
+		if (lib.DOB.get(name) == null){
 			p.getPhysics().setPosition(loc);
 		}
 	}

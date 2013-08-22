@@ -4,7 +4,7 @@ description: ${project.description}
 author: ${project.organization.name}
 website: ${project.organization.url}
 
-main: com.github.thelonedevil.TLDRules.CleanRules
+main: ${mainClass}
 depends: [TLDcommonlib]
 load: startup
 platform: Server

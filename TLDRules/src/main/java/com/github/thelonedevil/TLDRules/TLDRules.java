@@ -9,8 +9,8 @@ import com.github.thelonedevil.TLDRules.commands.PlayerCommands;
  * 
  * @author Craig <tenowg at thedemgel.com>
  */
-public class CleanRules extends Plugin {
-	private static CleanRules instance;
+public class TLDRules extends Plugin {
+	private static TLDRules instance;
 	@Override
 	public void onLoad() {
 		setInstance(this);
@@ -27,11 +27,11 @@ public class CleanRules extends Plugin {
 	public void onDisable() {
 	}
 
-	private static void setInstance(CleanRules plugin) {
+	private static void setInstance(TLDRules plugin) {
 		instance = plugin;
 	}
 
-	public static CleanRules getInstance() {
+	public static TLDRules getInstance() {
 		return instance;
 	}
 }

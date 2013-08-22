@@ -61,39 +61,39 @@ public class PlayerCommands {
 		int date3 = Integer.parseInt(date2);
 		cal2.clear();
 		cal2.set(year3, month3, date3);
-		TLDAgeChecker.DOB.put(name, cal2);
+		lib.DOB.put(name, cal2);
 		int year = cal1.get(Calendar.YEAR);
 		int month = cal1.get(Calendar.MONTH);
 		int day = cal1.get(Calendar.DATE);
 		int year1 = cal2.get(Calendar.YEAR);
 		int month1 = cal2.get(Calendar.MONTH);
 		int day1 = cal2.get(Calendar.DATE);
-		if (TLDAgeChecker.allowed.get(name) == null) {
+		if (lib.allowed.get(name) == null) {
 			if (year > year1) {
-				TLDAgeChecker.allowed.put(name, true);
+				lib.allowed.put(name, true);
 			} else {
 				if (year < year1) {
-					TLDAgeChecker.allowed.put(name, false);
+					lib.allowed.put(name, false);
 				}
 				if (year == year1) {
 					if (month > month1) {
-						TLDAgeChecker.allowed.put(name, true);
+						lib.allowed.put(name, true);
 					} else {
 						if (month < month1) {
-							TLDAgeChecker.allowed.put(name, false);
+							lib.allowed.put(name, false);
 						}
 						if (month == month1) {
 							if (day >= day1) {
-								TLDAgeChecker.allowed.put(name, true);
+								lib.allowed.put(name, true);
 							} else if (day < day1) {
-								TLDAgeChecker.allowed.put(name, false);
+								lib.allowed.put(name, false);
 							}
 						}
 					}
 
-				} else if (TLDAgeChecker.allowed.get(name) == false) {
+				} else if (lib.allowed.get(name) == false) {
 					player.kick("You are not old enough to play on this server");
-				} else if (TLDAgeChecker.allowed.get(name) == true) {
+				} else if (lib.allowed.get(name) == true) {
 					player.sendMessage("You are old enough to play on this server");
 				}
 

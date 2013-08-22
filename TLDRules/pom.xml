@@ -33,7 +33,7 @@
 		<currentYear>2013</currentYear>
 		<spoutVersion>1.0.0-SNAPSHOT</spoutVersion>
 		<buildNumber>0</buildNumber>
-		<mainClass>com.github.thelonedevil.newPlugin.newPlugin</mainClass>
+		<mainClass>com.github.thelonedevil.TLDRules.TLDRules</mainClass>
 		<!-- add plugin dependancies in the format of [Vanilla,Test] -->
 		<depends></depends>
 	</properties>

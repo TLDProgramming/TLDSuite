@@ -5,9 +5,9 @@ import org.spout.api.plugin.Plugin;
 
 import com.github.thelonedevil.TLDQuotes.commands.PlayerCommands;
 
-public class Quoter extends Plugin {
+public class TLDQuotes extends Plugin {
 
-	private static Quoter instance;
+	private static TLDQuotes instance;
 
 	@Override
 	public void onLoad() {
@@ -33,11 +33,11 @@ public class Quoter extends Plugin {
 	public void onDisable() {
 	}
 
-	private static void setInstance(Quoter plugin) {
+	private static void setInstance(TLDQuotes plugin) {
 		instance = plugin;
 	}
 
-	public static Quoter getInstance() {
+	public static TLDQuotes getInstance() {
 		return instance;
 	}
 }

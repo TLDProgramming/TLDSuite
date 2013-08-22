@@ -6,13 +6,13 @@ import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.exception.CommandException;
 
 import com.github.thelonedevil.TLDCommonlib.Lib;
-import com.github.thelonedevil.TLDRules.CleanRules;
+import com.github.thelonedevil.TLDRules.TLDRules;
 
 public class PlayerCommands {
 
-	private CleanRules plugin;
+	private TLDRules plugin;
 
-	public PlayerCommands(CleanRules instance) {
+	public PlayerCommands(TLDRules instance) {
 		this.plugin = instance;
 	}
 

@@ -14,14 +14,14 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  */
 public class EListener implements Listener {
 
-	private Quoter plugin;
+	private TLDQuotes plugin;
 
-	public EListener(Quoter instance) {
+	public EListener(TLDQuotes instance) {
 		this.plugin = instance;
 	}
 	private Lib lib = new Lib();
 	@EventHandler
-	public void onPlayerDeath(PlayerRespawnEvent event) {
+	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
 		if (player != null) {
 			String quote = lib.Quotes.get(new Random().nextInt(lib.Quotes.size()));

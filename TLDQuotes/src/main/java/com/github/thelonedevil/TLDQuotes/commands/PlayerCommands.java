@@ -11,13 +11,13 @@ import org.spout.api.entity.Player;
 import org.spout.api.exception.CommandException;
 
 import com.github.thelonedevil.TLDCommonlib.Lib;
-import com.github.thelonedevil.TLDQuotes.Quoter;
+import com.github.thelonedevil.TLDQuotes.TLDQuotes;
 
 public class PlayerCommands {
 
-	private Quoter plugin;
+	private TLDQuotes plugin;
 
-	public PlayerCommands(Quoter instance) {
+	public PlayerCommands(TLDQuotes instance) {
 		this.plugin = instance;
 	}
 	private Lib lib = new Lib();
@@ -27,7 +27,7 @@ public class PlayerCommands {
 	String last;
 
 	@CommandDescription(aliases = "Quote", usage = "/Quote", desc = "Displays a random quote from a list")
-	@Permissible("Quoter.quote")
+	@Permissible("TLDQuotes.quote")
 	public void Quotes(CommandSource source, CommandArguments args) throws CommandException {
 		int random = new Random().nextInt(lib.Quotes.size());
 		if (args.length() == 0) {

@@ -11,9 +11,9 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  * A Basic Event Listener for Spout
  */
 public class EListener implements Listener {
-	private Welcomer plugin;
+	private TLDWelcomer plugin;
 
-	public EListener(Welcomer instance) {
+	public EListener(TLDWelcomer instance) {
 		this.plugin = instance;
 	}
 

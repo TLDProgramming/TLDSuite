@@ -11,9 +11,9 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  * A Basic Event Listener for Spout
  */
 public class PlayerJoin implements Listener {
-	private CleanRules plugin;
+	private TLDRules plugin;
 
-	public PlayerJoin(CleanRules instance) {
+	public PlayerJoin(TLDRules instance) {
 		this.plugin = instance;
 	}
 

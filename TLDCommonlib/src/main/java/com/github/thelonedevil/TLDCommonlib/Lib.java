@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,8 @@ public class Lib extends Plugin {
 	public List<String> admins = new ArrayList<String>();
 	public int reserved;
 	public HashMap<String, String> factions = new HashMap<String, String>();
+	public HashMap<String, Calendar> DOB = new HashMap<String, Calendar>();
+	public HashMap<String, Boolean> allowed = new HashMap<String, Boolean>();
 	public String dateformat;
 	public HashMap<String, Integer> factionsclaims = new HashMap<String, Integer>();
 
@@ -105,14 +108,7 @@ public class Lib extends Plugin {
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
 
 		// data loading
-		data.loginMessages();
-		data.notes();
-		data.rules();
-		data.afk();
-		data.reserve();
-		data.randomQuote();
-		data.dateformat();
-		data.factions();
+		data.load();
 
 		getLogger().info(logged + "Enabled!");
 	}
@@ -120,9 +116,7 @@ public class Lib extends Plugin {
 	@Override
 	public void onDisable() {
 		try {
-			SLAPI.save(logins, "plugins/TLDCommonlib/logins.dat");
-			SLAPI.save(admins, "plugins/TLDCommonlib/reserve.dat");
-			SLAPI.save(factions, "plugins/TLDCommonlib/FactionMottos.dat");
+			data.save();
 			connection.close();
 		} catch (Exception e) {
 			errorLogger();

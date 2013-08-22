@@ -33,7 +33,7 @@
 		<currentYear>2013</currentYear>
 		<spoutVersion>1.0.0-SNAPSHOT</spoutVersion>
 		<buildNumber>0</buildNumber>
-		<mainClass>com.github.thelonedevil.TLDQuotes.Quoter</mainClass>
+		<mainClass>com.github.thelonedevil.TLDQuotes.TLDQuotes</mainClass>
 		<!-- add plugin dependancies in the format of [Vanilla,Test] -->
 		<depends>[Vanilla]</depends>
 	</properties>

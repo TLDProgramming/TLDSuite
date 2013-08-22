@@ -1,9 +1,13 @@
 package com.github.thelonedevil.TLDCommonlib;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -14,12 +18,32 @@ import java.util.logging.Level;
 
 import org.spout.api.Server;
 import org.spout.cereal.config.ConfigurationNode;
+import org.yaml.snakeyaml.Yaml;
 
 public class Data {
 	private Lib plugin;
 
 	public Data(Lib instance) {
 		this.plugin = instance;
+	}
+	void load(){
+		loginMessages();
+		notes();
+		rules();
+		afk();
+		reserve();
+		randomQuote();
+		dateformat();
+		factions();
+		allowedyaml();
+		dobyaml();
+	}
+	void save() throws Exception{
+		SLAPI.save(plugin.logins, "plugins/TLDCommonlib/logins.dat");
+		SLAPI.save(plugin.admins, "plugins/TLDCommonlib/reserve.dat");
+		SLAPI.save(plugin.factions, "plugins/TLDCommonlib/FactionMottos.dat");
+		allowedyamls();
+		dobyamls();
 	}
 
 	/**
@@ -261,6 +285,70 @@ public class Data {
 			plugin.getLogger().info("FactionClaims.dat has been created");
 		}
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	void dobyaml(){
+		File dobyaml1 = new File(plugin.libFolder+"/DOB.yml");
+		if(dobyaml1.exists()){
+			try {
+				InputStream input = new FileInputStream(dobyaml1);
+				Yaml yaml = new Yaml();
+			    plugin.DOB = (HashMap<String, Calendar>) yaml.load(input);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}	
+		}
+	}
+	@SuppressWarnings("unchecked")
+	void allowedyaml(){
+		File allowedyaml1 = new File(plugin.libFolder+"/allowed.yml");
+		if (allowedyaml1.exists()){
+			try {
+				InputStream input = new FileInputStream(allowedyaml1);
+				Yaml yaml = new Yaml();
+			    plugin.allowed = (HashMap<String, Boolean>) yaml.load(input);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	void dobyamls(){
+		File dobyaml1 = new File(plugin.libFolder+"/DOB.yml");
+		Yaml yaml = new Yaml();
+		String output = yaml.dump(plugin.DOB);
+		try {
+			plugin.libFolder.mkdirs();
+			dobyaml1.createNewFile();
+			PrintStream out =  new PrintStream("plugins/AgeChecker/DOB.yml");
+			out.print(output);
+			out.close();
+		} catch (FileNotFoundException e) {
+			plugin.errorLogger();
+			e.printStackTrace();
+		} catch (IOException e) {
+			plugin.errorLogger();
+			e.printStackTrace();
+		}
+	}
+	void allowedyamls(){
+		File allowedyaml1 = new File(plugin.libFolder+"/allowed.yml");
+		Yaml yaml = new Yaml();
+		String output = yaml.dump(plugin.allowed);
+		try {
+			plugin.libFolder.mkdirs();
+			allowedyaml1.createNewFile();
+			PrintStream out =  new PrintStream("plugins/AgeChecker/allowed.yml");
+			out.print(output);
+			out.close();
+		} catch (FileNotFoundException e) {
+			plugin.errorLogger();
+			e.printStackTrace();
+		} catch (IOException e) {
+			plugin.errorLogger();
+			e.printStackTrace();
+		}
 	}
 
 }
