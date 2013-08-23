@@ -20,14 +20,14 @@ public class CastCommands {
 	public CastCommands(TLDSpellsPlugin instance) {
 		this.plugin = instance;
 	}
-	@CommandDescription(aliases = {"Icebolt"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = {"Icebolt"}, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Icebolt(CommandSource source, CommandArguments args) throws CommandException {
 		IceBolt icebolt = new IceBolt(plugin);
 		icebolt.cast((Player)source);
 	}
-	@CommandDescription(aliases = {"Firebolt"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = {"Firebolt"}, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Firebolt(CommandSource source, CommandArguments args) throws CommandException {
@@ -35,7 +35,7 @@ public class CastCommands {
 		firebolt.cast((Player)source);
 	}
 	
-	@CommandDescription(aliases = {"Healingbolt"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = {"Healingbolt"}, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Healingbolt(CommandSource source, CommandArguments args) throws CommandException {

@@ -49,8 +49,8 @@ public class TLDSpellsCommands {
 		source.sendMessage("The TLDSpells plugin command has been successfully issued.");
 	}
 
-	@CommandDescription(aliases = { "bind", "bind" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
-	@Permissible("TLDSpells.some.permission")
+	@CommandDescription(aliases = { "bind", "bind" }, desc = "")
+	@Permissible("TLDSpells.bind")
 	@Filter(PlayerFilter.class)
 	public void bind(CommandSource source, CommandArguments args) throws CommandException {
 		String name = source.getName();

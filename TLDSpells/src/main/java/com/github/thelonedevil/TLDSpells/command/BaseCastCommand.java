@@ -16,8 +16,8 @@ public class BaseCastCommand {
 		this.plugin = instance;
 	}
 
-	@CommandDescription(aliases = {"Cast", "spell"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
-	@Permissible("TLDSpells.some.permission")
+	@CommandDescription(aliases = {"Cast", "spell"}, desc = "")
+	@Permissible("TLDSpells.cast")
 	public void Cast(CommandSource source, CommandArguments args) throws CommandException {
 		
 	}

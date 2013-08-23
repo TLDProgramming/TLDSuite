@@ -24,10 +24,10 @@ public class PlayerCommands {
 
 	private Lib lib = new Lib();
 
-	@CommandDescription(aliases = { "command", "cmd" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.")
-	@Permissible("TLDAgeChecker.some.permission")
+	@CommandDescription(aliases = { "TLDAgeChecker", "DOB" }, usage = "", desc = "")
+	@Permissible("TLDAgeChecker.DOB")
 	@Filter(PlayerFilter.class)
-	public void aCommand(CommandSource source, CommandArguments args) throws CommandException {
+	public void TLDAgeChecker(CommandSource source, CommandArguments args) throws CommandException {
 		Player player = (Player) source;
 		String name = player.getName();
 		Date now = new Date();

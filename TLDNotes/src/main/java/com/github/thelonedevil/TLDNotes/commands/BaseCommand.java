@@ -17,7 +17,7 @@ public class BaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = { "Notes" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
-	public void notes(CommandSource source, CommandArguments args) throws CommandException {	
+	@CommandDescription(aliases = { "TLDNotes", "Notes" }, desc = "")
+	public void TLDNotes(CommandSource source, CommandArguments args) throws CommandException {	
 	}
 }

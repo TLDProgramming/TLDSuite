@@ -4,6 +4,7 @@ import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.plugin.Plugin;
 
 import com.github.thelonedevil.TLDReserve.commands.PlayerCommands;
+import com.github.thelonedevil.TLDReserve.commands.TLDReserveBaseCommand;
 
 /**
  * If you have found this useful, please let me know.
@@ -22,7 +23,8 @@ public class TLDReserve extends Plugin {
 	@Override
 	public void onEnable() {
 		// Commands
-		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this));
+		AnnotatedCommandExecutorFactory.create(new TLDReserveBaseCommand(this));
+		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this), getEngine().getCommandManager().getCommand("TLDReserve"));
 
 		getEngine().getEventManager().registerEvents(new EListener(this), this);
 

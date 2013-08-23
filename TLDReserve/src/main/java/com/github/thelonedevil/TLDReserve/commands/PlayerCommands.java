@@ -19,7 +19,7 @@ public class PlayerCommands {
 	
 	private Lib lib = new Lib();
 
-	@CommandDescription(aliases = { "admin" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.")
+	@CommandDescription(aliases = { "admin" }, usage = "", desc = "")
 	@Permissible("TLDReserve.admin")
 	public void admin(CommandSource source, CommandArguments args) throws CommandException {
 		String target = args.popString("Target Player");

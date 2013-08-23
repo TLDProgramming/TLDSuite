@@ -27,7 +27,7 @@ public class TLDFactionsBaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = { "tldf", "TLDFactions" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = { "tldf", "TLDFactions" }, desc = "")
 	public void TLDFactions(CommandSource source, CommandArguments args) throws CommandException {
 		int amount = plugin.getEngine().getCommandManager().getCommand("TLDFactions").getChildren().size();
 		org.spout.api.command.Command[] cmds = new org.spout.api.command.Command[amount];

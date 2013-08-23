@@ -26,7 +26,7 @@ public class TLDSpellsBaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = {"TLDSpells", "TLDS"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = {"TLDSpells", "TLDS"}, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	public void TLDSpells(CommandSource source, CommandArguments args) throws CommandException {
 		

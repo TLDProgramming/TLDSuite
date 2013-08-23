@@ -3,6 +3,8 @@ package com.github.thelonedevil.TLDRules.commands;
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.CommandDescription;
+import org.spout.api.command.annotated.Filter;
+import org.spout.api.command.filter.PlayerFilter;
 import org.spout.api.exception.CommandException;
 
 import com.github.thelonedevil.TLDCommonlib.Lib;
@@ -18,8 +20,9 @@ public class PlayerCommands {
 
 	private Lib lib = new Lib();
 
-	@CommandDescription(aliases = { "ruleset", "rules" }, desc = "Displays the rules")
-	public void rules(CommandSource source, CommandArguments args) throws CommandException {
+	@CommandDescription(aliases = { "View", "show" }, desc = "Displays the rules")
+	@Filter(PlayerFilter.class)
+	public void View(CommandSource source, CommandArguments args) throws CommandException {
 		int page = 0;
 		if (args.length() > 0) {
 			page = args.popInteger("page");

@@ -21,10 +21,10 @@ public class PlayerCommands {
 	}
 	private Lib lib = new Lib();
 
-	@CommandDescription(aliases = { "command", "cmd" }, usage = "No Usage, replace this command", desc = "This is just an Example. Replace it.")
+	@CommandDescription(aliases = { "TLDAfk", "Afk" }, usage = "", desc = "")
 	@Permissible("TLDAfk.toggle")
 	@Filter(PlayerFilter.class)
-	public void afk(CommandSource source, CommandArguments args) throws CommandException {
+	public void TLDAfk(CommandSource source, CommandArguments args) throws CommandException {
 		String name = source.getName();
 		if (lib.afk.get(name) == false || lib.afk.get(name) == null) {
 			lib.afk.put(name, true);

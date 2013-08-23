@@ -43,7 +43,7 @@ public class TLDFactionsCommands {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = { "create", "found" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = { "create", "found" }, desc = "Lets you create a Faction")
 	@Permissible("TLDFactions.create")
 	@Filter(PlayerFilter.class)
 	public void create(CommandSource source, CommandArguments args) throws CommandException {

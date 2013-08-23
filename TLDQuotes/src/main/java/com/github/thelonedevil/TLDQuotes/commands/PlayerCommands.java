@@ -26,7 +26,7 @@ public class PlayerCommands {
 	String quote;
 	String last;
 
-	@CommandDescription(aliases = "Quote", usage = "/Quote", desc = "Displays a random quote from a list")
+	@CommandDescription(aliases = {"Quote","TLDQuote"}, usage = "/Quote", desc = "Displays a random quote from a list")
 	@Permissible("TLDQuotes.quote")
 	public void Quotes(CommandSource source, CommandArguments args) throws CommandException {
 		int random = new Random().nextInt(lib.Quotes.size());
