@@ -9,17 +9,18 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>TLDCommonlib</module>
-		<module>TLDAfk</module>
-		<module>TLDFactions</module>
-		<module>TLDNotes</module>
-		<module>TLDQuotes</module>
-		<module>TLDReserve</module>
-		<module>TLDRules</module>
-		<module>TLDWelcomer</module>
-		<module>TLDSpells</module>
-		<module>TLDAgeChecker</module>
-		<module>distribution</module>
+	 <module>TLDAfk</module>
+	 <module>distribution</module>
+	 <module>TLDAgeChecker</module>
+	 <module>TLDCommonlib</module>
+	 <module>TLDFactions</module>
+	 <module>TLDNotes</module>
+	 <module>TLDQuotes</module>
+	 <module>TLDReserve</module>
+	 <module>TLDRules</module>
+	 <module>TLDScape</module>
+	 <module>TLDSpells</module>
+	 <module>TLDWelcomer</module>
 	</modules>
 	<distributionManagement>
 		<snapshotRepository>
