@@ -20,39 +20,40 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
  * Provides an example of an event listener class.
  */
 public class TLDScapeListener implements Listener {
-	private TLDScapePlugin plugin;
-	private DataBase database = new DataBase();
 
-	public TLDScapeListener(TLDScapePlugin instance) {
-		this.plugin = instance;
-	}
+    private TLDScapePlugin plugin;
+    private DataBase database = new DataBase();
 
-	@EventHandler
-	public void onPlayerChat(PlayerChatEvent event) {
-		Player p = event.getPlayer();
-		String name = p.getName();
-		// TODO make quickchat!
-	}
+    public TLDScapeListener(TLDScapePlugin instance) {
+        this.plugin = instance;
+    }
 
-	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
-		Player p = event.getPlayer();
-		String name = p.getName();
-		HashMap<String, Object> skills = new HashMap<String, Object>();
-		try {
-			skills = database.getRow(Lib.statement, "ScapeSkills", name, "Player");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(skills.isEmpty()){
-			skills.put("HitPoints", 1154);
-			try {
-				database.updateRow(Lib.statement, "ScapeSkills", name, "Player", skills);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+    @EventHandler
+    public void onPlayerChat(PlayerChatEvent event) {
+        Player p = event.getPlayer();
+        String name = p.getName();
+        // TODO make quickchat!
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        Player p = event.getPlayer();
+        String name = p.getName();
+        HashMap<String, Object> skills = null;
+        try {
+            skills = database.getRow(Lib.statement, "ScapeSkills", name, "Player");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (skills != null && skills.isEmpty()) {
+            skills.put("HitPoints", 1154);
+            try {
+                database.updateRow(Lib.statement, "ScapeSkills", name, "Player", skills);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 }
