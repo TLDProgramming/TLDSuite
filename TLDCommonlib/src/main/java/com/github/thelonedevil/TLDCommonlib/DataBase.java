@@ -310,6 +310,32 @@ public class DataBase {
      *
      * @param statement
      * @param table
+     * @param column
+     * @return
+     * @throws SQLException
+     */
+    public List<String> getStrings(Statement statement, String table, String column, Boolean distinct) throws SQLException {
+	String start;
+	if (distinct) {
+	    start = "SELECT DISTINCT ";
+	} else {
+	    start = "SELECT ";
+	}
+	String query = start + column + " FROM" + table;
+	ResultSet rs1 = rs(statement, query);
+	List<String> object = new ArrayList<String>();
+	while (rs1.next()) {
+	    object.add(rs1.getString(column));
+	}
+	rs1.close();
+	return object;
+
+    }
+
+    /**
+     *
+     * @param statement
+     * @param table
      * @param column1
      * @param column2
      * @return
