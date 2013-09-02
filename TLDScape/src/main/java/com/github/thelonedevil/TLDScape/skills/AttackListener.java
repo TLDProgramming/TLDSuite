@@ -35,42 +35,39 @@ public class AttackListener implements Listener {
 		}
 		if (skills != null) {
 			int xp = (Integer) skills.get("Attack");
-			if (xp >= Levels.L1) {
-				// wooden
-			} else if (xp >= Levels.L2) {
-			} else if (xp >= Levels.L3) {
-			} else if (xp >= Levels.L4) {
-			} else if (xp >= Levels.L5) {
-			} else if (xp >= Levels.L6) {
-				// stone
-			} else if (xp >= Levels.L7) {
-			} else if (xp >= Levels.L8) {
-			} else if (xp >= Levels.L9) {
-			} else if (xp >= Levels.L10) {
-			} else if (xp >= Levels.L11) {
-			} else if (xp >= Levels.L12) {
-				// gold
-			} else if (xp >= Levels.L13) {
-			} else if (xp >= Levels.L14) {
-			} else if (xp >= Levels.L15) {
-			} else if (xp >= Levels.L16) {
-			} else if (xp >= Levels.L17) {
-			} else if (xp >= Levels.L18) {
-				// iron
-			} else if (xp >= Levels.L19) {
-			} else if (xp >= Levels.L20) {
-			} else if (xp >= Levels.L21) {
-			} else if (xp >= Levels.L22) {
-			} else if (xp >= Levels.L23) {
-			} else if (xp >= Levels.L24) {
-				// diamond
-			} else if (xp >= Levels.L25) {
-			} else if (xp >= Levels.L26) {
-			} else if (xp >= Levels.L27) {
-			} else if (xp >= Levels.L28) {
-			} else if (xp >= Levels.L29) {
-			} else if (xp >= Levels.L30) {
-				// faster attacks
+			int level = Levels.getLevel(xp);
+			switch (level) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+			case 11:
+			case 12:
+			case 13:
+			case 14:
+			case 15:
+			case 16:
+			case 17:
+			case 18:
+			case 19:
+			case 20:
+			case 21:
+			case 22:
+			case 23:
+			case 24:
+			case 25:
+			case 26:
+			case 27:
+			case 28:
+			case 29:
+			case 30:
+
 			}
 		}
 	}

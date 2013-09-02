@@ -10,7 +10,7 @@ import com.github.thelonedevil.TLDSpells.Spells.Bolt;
 
 public class PlayerCastSpellEvent extends AbstractPlayerEvent implements Cancellable {
 	private static final HandlerList handlers = new HandlerList();
-	
+
 	Bolt spell;
 	Player p;
 
@@ -25,16 +25,16 @@ public class PlayerCastSpellEvent extends AbstractPlayerEvent implements Cancell
 	public void setCancelled(boolean cancelled) {
 		super.setCancelled(cancelled);
 	}
-	
-	public Bolt getSpell(){
+
+	public Bolt getSpell() {
 		return spell;
 	}
-	
-	public void setSpell(Bolt spell){
+
+	public void setSpell(Bolt spell) {
 		this.spell = spell;
 	}
-	
-	public Level getLevel(){
+
+	public Level getLevel() {
 		return this.p.get(Level.class);
 	}
 

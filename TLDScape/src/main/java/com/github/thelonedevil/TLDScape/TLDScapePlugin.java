@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDScape. It also has a hard 
+ * This file is part of the Spout plugin TLDScape. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDScape;
@@ -13,7 +13,6 @@ import com.github.thelonedevil.TLDScape.skills.AttackListener;
 import com.github.thelonedevil.TLDScape.skills.HitPointsListener;
 import com.github.thelonedevil.TLDScape.skills.MiningListener;
 import com.github.thelonedevil.TLDScape.skills.WoodCuttingListener;
-
 
 /**
  * Defines the main class of the plugin.
@@ -56,5 +55,5 @@ public class TLDScapePlugin extends Plugin {
 	public static TLDScapePlugin getInstance() {
 		return instance;
 	}
-	
+
 }

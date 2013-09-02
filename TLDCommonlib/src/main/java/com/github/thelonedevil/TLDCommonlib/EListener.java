@@ -17,17 +17,18 @@ public class EListener implements Listener {
 		this.plugin = instance;
 	}
 
-    int first = 1;
+	int first = 1;
 	String name;
+
 	@EventHandler
-    public void onLogin(PlayerLoginEvent event) {
-        Player player = event.getPlayer();
-        name = player.getName();
-        if (plugin.logins.get(name)== null){
-        	plugin.logins.put(name,first);
-        }else if (plugin.logins.get(name)>= 1){
-        	int New = (plugin.logins.get(name))+1; 
-        	plugin.logins.put(name,New);
+	public void onLogin(PlayerLoginEvent event) {
+		Player player = event.getPlayer();
+		name = player.getName();
+		if (plugin.logins.get(name) == null) {
+			plugin.logins.put(name, first);
+		} else if (plugin.logins.get(name) >= 1) {
+			int New = (plugin.logins.get(name)) + 1;
+			plugin.logins.put(name, New);
 		}
 	}
 }

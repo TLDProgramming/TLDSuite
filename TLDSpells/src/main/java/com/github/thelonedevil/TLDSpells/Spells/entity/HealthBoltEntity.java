@@ -7,12 +7,17 @@ import org.spout.vanilla.protocol.entity.VanillaEntityProtocol;
 import org.spout.vanilla.protocol.entity.object.ObjectEntityProtocol;
 import org.spout.vanilla.protocol.entity.object.ObjectType;
 
-public class HealthBoltEntity extends Substance implements Projectile{
+public class HealthBoltEntity extends Substance implements Projectile {
 	private Entity shooter;
-	
+
 	@Override
 	public void onAttached() {
-		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.POTION); //replace object type with something else
+		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.POTION); // replace
+																				// object
+																				// type
+																				// with
+																				// something
+																				// else
 		setEntityProtocol(pr);
 		super.onAttached();
 	}
@@ -25,7 +30,7 @@ public class HealthBoltEntity extends Substance implements Projectile{
 	@Override
 	public void setShooter(Entity shooter) {
 		this.shooter = shooter;
-		
+
 	}
 
 }

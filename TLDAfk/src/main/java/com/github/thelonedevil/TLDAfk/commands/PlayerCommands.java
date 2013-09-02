@@ -15,10 +15,11 @@ import com.github.thelonedevil.TLDCommonlib.Lib;
 public class PlayerCommands {
 
 	private TLDAfk plugin;
-	
+
 	public PlayerCommands(TLDAfk instance) {
 		this.plugin = instance;
 	}
+
 	private Lib lib = new Lib();
 
 	@CommandDescription(aliases = { "TLDAfk", "Afk" }, usage = "", desc = "")

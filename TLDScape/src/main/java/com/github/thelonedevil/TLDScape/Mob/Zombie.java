@@ -4,13 +4,15 @@
  */
 package com.github.thelonedevil.TLDScape.Mob;
 
-import org.spout.vanilla.component.entity.living.Hostile;
-import org.spout.vanilla.component.entity.living.Living;
-
 /**
- *
+ * 
  * @author justin
  */
-public class Zombie extends Living implements Hostile {
-    
+public class Zombie extends org.spout.vanilla.component.entity.living.hostile.Zombie {
+
+	@Override
+	public void onAttached() {
+		super.onAttached();
+	}
+
 }

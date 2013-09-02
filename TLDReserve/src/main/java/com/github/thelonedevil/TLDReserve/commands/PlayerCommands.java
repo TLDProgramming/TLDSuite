@@ -16,7 +16,7 @@ public class PlayerCommands {
 	public PlayerCommands(TLDReserve instance) {
 		this.plugin = instance;
 	}
-	
+
 	private Lib lib = new Lib();
 
 	@CommandDescription(aliases = { "admin" }, usage = "", desc = "")

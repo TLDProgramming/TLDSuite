@@ -12,7 +12,11 @@ public class FireBoltEntity extends Substance implements Projectile {
 
 	@Override
 	public void onAttached() {
-		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.FIREWORKS_ROCKET); //replace object type with fireball
+		VanillaEntityProtocol pr = new ObjectEntityProtocol(ObjectType.FIREWORKS_ROCKET); // replace
+																							// object
+																							// type
+																							// with
+																							// fireball
 		setEntityProtocol(pr);
 		super.onAttached();
 	}

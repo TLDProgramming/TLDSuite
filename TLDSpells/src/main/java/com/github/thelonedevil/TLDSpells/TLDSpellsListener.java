@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDSpells. It also has a hard 
+ * This file is part of the Spout plugin TLDSpells. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDSpells;

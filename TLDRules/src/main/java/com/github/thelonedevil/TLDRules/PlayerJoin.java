@@ -18,7 +18,7 @@ public class PlayerJoin implements Listener {
 	}
 
 	private Lib lib = new Lib();
-	
+
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();

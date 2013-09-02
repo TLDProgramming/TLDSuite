@@ -2,9 +2,9 @@ package com.github.thelonedevil.TLDWelcomer;
 
 import org.spout.api.plugin.Plugin;
 
-
 public class TLDWelcomer extends Plugin {
 	private static TLDWelcomer instance;
+
 	@Override
 	public void onLoad() {
 		setInstance(this);
@@ -18,7 +18,7 @@ public class TLDWelcomer extends Plugin {
 	@Override
 	public void onDisable() {
 	}
-	
+
 	private static void setInstance(TLDWelcomer plugin) {
 		instance = plugin;
 	}

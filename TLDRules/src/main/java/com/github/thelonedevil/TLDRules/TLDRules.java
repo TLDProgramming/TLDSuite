@@ -13,6 +13,7 @@ import com.github.thelonedevil.TLDRules.commands.TLDRulesBaseCommand;
  */
 public class TLDRules extends Plugin {
 	private static TLDRules instance;
+
 	@Override
 	public void onLoad() {
 		setInstance(this);
@@ -23,7 +24,7 @@ public class TLDRules extends Plugin {
 		// Commands
 		getEngine().getEventManager().registerEvents(new PlayerJoin(this), this);
 		AnnotatedCommandExecutorFactory.create(new TLDRulesBaseCommand(this));
-		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this),getEngine().getCommandManager().getCommand("TLDRules"));
+		AnnotatedCommandExecutorFactory.create(new PlayerCommands(this), getEngine().getCommandManager().getCommand("TLDRules"));
 	}
 
 	@Override

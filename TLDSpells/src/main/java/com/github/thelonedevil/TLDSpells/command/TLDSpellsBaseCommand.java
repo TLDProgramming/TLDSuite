@@ -1,6 +1,5 @@
-
 /*
- * This file is part of the Spout plugin TLDSpells. It also has a hard 
+ * This file is part of the Spout plugin TLDSpells. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDSpells.command;
@@ -26,12 +25,12 @@ public class TLDSpellsBaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = {"TLDSpells", "TLDS"}, desc = "")
+	@CommandDescription(aliases = { "TLDSpells", "TLDS" }, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	public void TLDSpells(CommandSource source, CommandArguments args) throws CommandException {
-		
+
 		// Calling this command will send whoever issued it the message below.
 		source.sendMessage("The TLDSpells plugin base command has been successfully issued. (Type a sub-command)");
 	}
-	
+
 }

@@ -19,7 +19,9 @@ public class EListener implements Listener {
 	public EListener(TLDQuotes instance) {
 		this.plugin = instance;
 	}
+
 	private Lib lib = new Lib();
+
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();

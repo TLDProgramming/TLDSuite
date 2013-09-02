@@ -90,10 +90,10 @@ public class Lib extends Plugin {
 			statement = sql.state(connection, 30);
 			sql.createTable(statement, "Factions", "Player", "string", "Faction", "string", "Rank", "string");
 			sql.createTable(statement, "FactionClaims", "Faction", "string", "x", "int", "y", "int", "z", "int");
-			sql.createTable(statement, "ScapeSkills","Player","String", "HitPoints", "BIGINT", "Attack", "BIGINT", "Strength", "BIGINT", "Defence", "BIGINT", "Magic", "BIGINT", "Range", "BIGINT", "WoodCutting",
-					"BIGINT", "Prayer", "BIGINT", "Mining", "BIGINT", "Smithing", "BIGINT", "Agility", "BIGINT", "Fishing", "BIGINT", "FireMaking", "BIGINT", "Fletching", "BIGINT", "Crafting",
-					"BIGINT", "Herblore", "BIGINT", "Farming", "BIGINT", "Hunting", "BIGINT", "Construction", "BIGINT", "Slayer", "BIGINT", "Cooking", "BIGINT", "Dungeoneering",
-					"BIGINT", "Runecrafting", "BIGINT", "Thieving", "BIGINT", "Summoning", "BIGINT");
+			sql.createTable(statement, "ScapeSkills", "Player", "String", "HitPoints", "BIGINT", "Attack", "BIGINT", "Strength", "BIGINT", "Defence", "BIGINT", "Magic", "BIGINT", "Range", "BIGINT",
+					"WoodCutting", "BIGINT", "Prayer", "BIGINT", "Mining", "BIGINT", "Smithing", "BIGINT", "Agility", "BIGINT", "Fishing", "BIGINT", "FireMaking", "BIGINT", "Fletching", "BIGINT",
+					"Crafting", "BIGINT", "Herblore", "BIGINT", "Farming", "BIGINT", "Hunting", "BIGINT", "Construction", "BIGINT", "Slayer", "BIGINT", "Cooking", "BIGINT", "Dungeoneering", "BIGINT",
+					"Runecrafting", "BIGINT", "Thieving", "BIGINT", "Summoning", "BIGINT");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

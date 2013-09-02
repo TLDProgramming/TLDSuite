@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDReserve. 
+ * This file is part of the Spout plugin TLDReserve.
  */
 package com.github.thelonedevil.TLDReserve.commands;
 

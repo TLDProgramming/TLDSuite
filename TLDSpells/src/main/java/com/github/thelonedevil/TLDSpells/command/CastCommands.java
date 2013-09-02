@@ -20,26 +20,28 @@ public class CastCommands {
 	public CastCommands(TLDSpellsPlugin instance) {
 		this.plugin = instance;
 	}
-	@CommandDescription(aliases = {"Icebolt"}, desc = "")
+
+	@CommandDescription(aliases = { "Icebolt" }, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Icebolt(CommandSource source, CommandArguments args) throws CommandException {
 		IceBolt icebolt = new IceBolt(plugin);
-		icebolt.cast((Player)source);
+		icebolt.cast((Player) source);
 	}
-	@CommandDescription(aliases = {"Firebolt"}, desc = "")
+
+	@CommandDescription(aliases = { "Firebolt" }, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Firebolt(CommandSource source, CommandArguments args) throws CommandException {
 		FireBolt firebolt = new FireBolt(plugin);
-		firebolt.cast((Player)source);
+		firebolt.cast((Player) source);
 	}
-	
-	@CommandDescription(aliases = {"Healingbolt"}, desc = "")
+
+	@CommandDescription(aliases = { "Healingbolt" }, desc = "")
 	@Permissible("TLDSpells.some.permission")
 	@Filter(PlayerFilter.class)
 	public void Healingbolt(CommandSource source, CommandArguments args) throws CommandException {
 		HealingBolt healingbolt = new HealingBolt(plugin);
-		healingbolt.cast((Player)source);
+		healingbolt.cast((Player) source);
 	}
 }

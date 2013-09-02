@@ -50,13 +50,13 @@ public class FireBolt extends Bolt implements Listener {
 		UUID e = event.getEntity().getUID();
 		if (list.containsKey(e)) {
 			Entity hit = event.getInteracted();
-				hit.get(Health.class).damage(amount);
-				Point loc = hit.getPhysics().getPosition();
-				GeneralEffect effect = new SmokeEffect(1);
-				PlayParticleEffectEvent particle = new PlayParticleEffectEvent(loc, effect, 0);
-				plugin.getEngine().getEventManager().callEvent(particle);
-				hit.get(Burn.class).setOnFire(10.0f, true);
-			
+			hit.get(Health.class).damage(amount);
+			Point loc = hit.getPhysics().getPosition();
+			GeneralEffect effect = new SmokeEffect(1);
+			PlayParticleEffectEvent particle = new PlayParticleEffectEvent(loc, effect, 0);
+			plugin.getEngine().getEventManager().callEvent(particle);
+			hit.get(Burn.class).setOnFire(10.0f, true);
+
 		}
 	}
 }

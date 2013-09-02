@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDRules. 
+ * This file is part of the Spout plugin TLDRules.
  */
 package com.github.thelonedevil.TLDRules.commands;
 

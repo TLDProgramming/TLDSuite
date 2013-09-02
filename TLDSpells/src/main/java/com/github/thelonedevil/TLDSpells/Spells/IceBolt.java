@@ -49,7 +49,7 @@ public class IceBolt extends Bolt implements Listener {
 		if (list.containsKey(e)) {
 			Entity hit = event.getInteracted();
 			hit.get(Health.class).damage(amount);
-			EntityEffect slow =  new EntityEffect(EntityEffectType.SLOWNESS, 2.5f);
+			EntityEffect slow = new EntityEffect(EntityEffectType.SLOWNESS, 2.5f);
 			hit.get(Effects.class).add(slow);
 		}
 

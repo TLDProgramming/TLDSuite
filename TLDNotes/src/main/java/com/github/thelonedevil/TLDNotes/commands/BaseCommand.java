@@ -9,7 +9,7 @@ import com.github.thelonedevil.TLDNotes.TLDNotes;
 
 public class BaseCommand {
 	private TLDNotes plugin;
-	
+
 	public BaseCommand(TLDNotes instance) {
 		this.plugin = instance;
 	}
@@ -18,6 +18,6 @@ public class BaseCommand {
 	 * Provides an example command that can be issued to the Spout server.
 	 */
 	@CommandDescription(aliases = { "TLDNotes", "Notes" }, desc = "")
-	public void TLDNotes(CommandSource source, CommandArguments args) throws CommandException {	
+	public void TLDNotes(CommandSource source, CommandArguments args) throws CommandException {
 	}
 }

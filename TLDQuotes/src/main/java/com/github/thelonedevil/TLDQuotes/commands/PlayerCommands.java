@@ -20,13 +20,14 @@ public class PlayerCommands {
 	public PlayerCommands(TLDQuotes instance) {
 		this.plugin = instance;
 	}
+
 	private Lib lib = new Lib();
-	
+
 	final String[] quote1 = new String[1];
 	String quote;
 	String last;
 
-	@CommandDescription(aliases = {"Quote","TLDQuote"}, usage = "/Quote", desc = "Displays a random quote from a list")
+	@CommandDescription(aliases = { "Quote", "TLDQuote" }, usage = "/Quote", desc = "Displays a random quote from a list")
 	@Permissible("TLDQuotes.quote")
 	public void Quotes(CommandSource source, CommandArguments args) throws CommandException {
 		int random = new Random().nextInt(lib.Quotes.size());
@@ -44,9 +45,9 @@ public class PlayerCommands {
 			}
 
 		} else if ((args.length() == 2 && args.popString("Shareing").equalsIgnoreCase("share")) && (args.get() != null)) {
-			Player target = ((Server)plugin.getEngine()).getPlayer(args.popString("Targer player"), true);
+			Player target = ((Server) plugin.getEngine()).getPlayer(args.popString("Targer player"), true);
 			if (target == null) {
-				source.sendMessage( "Player is not online!");
+				source.sendMessage("Player is not online!");
 				return;
 			} else if (quote1[0] != null) {
 				last = quote1[0];

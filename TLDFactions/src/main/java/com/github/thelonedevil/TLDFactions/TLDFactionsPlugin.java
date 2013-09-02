@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDFactions. It also has a hard 
+ * This file is part of the Spout plugin TLDFactions. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDFactions;
@@ -18,6 +18,7 @@ import com.github.thelonedevil.TLDFactions.command.TLDFactionsCommands;
  */
 public class TLDFactionsPlugin extends Plugin {
 	private static TLDFactionsPlugin instance;
+
 	@Override
 	public void onLoad() {
 		setInstance(this);
@@ -32,7 +33,7 @@ public class TLDFactionsPlugin extends Plugin {
 
 		// Register Events
 		getEngine().getEventManager().registerEvents(new TLDFactionsListener(this), this);
-		
+
 		getEngine().getServiceManager().register(ProtectionService.class, new service(), this, ServiceManager.ServicePriority.High);
 	}
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Spout plugin TLDFactions. It also has a hard 
+ * This file is part of the Spout plugin TLDFactions. It also has a hard
  * dependency on the Vanilla project.
  */
 package com.github.thelonedevil.TLDFactions.command;
@@ -36,12 +36,11 @@ public class TLDFactionsBaseCommand {
 		List<String> list = new ArrayList<String>();
 		source.sendMessage("The TLDFactions plugin base command has been successfully issued. (Type a sub-command)");
 		source.sendMessage("The sub commands are:");
-		while (i < amount && cmds[i] != null){
+		while (i < amount && cmds[i] != null) {
 			list.add(cmds[i].getName());
 			source.sendMessage(cmds[i].getName());
 			i++;
 		}
 
-		
 	}
 }

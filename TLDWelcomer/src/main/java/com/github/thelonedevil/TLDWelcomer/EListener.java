@@ -18,7 +18,7 @@ public class EListener implements Listener {
 	}
 
 	static String name;
-	
+
 	private Lib lib = new Lib();
 
 	@EventHandler

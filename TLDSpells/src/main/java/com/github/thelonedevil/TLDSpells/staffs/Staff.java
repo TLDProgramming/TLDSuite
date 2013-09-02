@@ -13,7 +13,6 @@ public class Staff extends VanillaItemMaterial {
 	public static final Staff NETHER_BRICK = new Staff("Nether Brick Staff", 6, STAFF);
 	public static final Staff QUARTZ = new Staff("Quartz Staff", 7, STAFF);
 
-
 	private Staff(short datamask, String name, int id) {
 		super(datamask, name, id, null);
 

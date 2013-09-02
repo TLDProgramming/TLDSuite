@@ -14,7 +14,6 @@ import com.github.thelonedevil.TLDReserve.commands.TLDReserveBaseCommand;
 public class TLDReserve extends Plugin {
 	private static TLDReserve instance;
 
-
 	@Override
 	public void onLoad() {
 		setInstance(this);

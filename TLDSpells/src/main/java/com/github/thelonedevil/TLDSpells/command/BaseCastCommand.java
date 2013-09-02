@@ -9,16 +9,16 @@ import org.spout.api.exception.CommandException;
 import com.github.thelonedevil.TLDSpells.TLDSpellsPlugin;
 
 public class BaseCastCommand {
-	
+
 	private final TLDSpellsPlugin plugin;
 
 	public BaseCastCommand(TLDSpellsPlugin instance) {
 		this.plugin = instance;
 	}
 
-	@CommandDescription(aliases = {"Cast", "spell"}, desc = "")
+	@CommandDescription(aliases = { "Cast", "spell" }, desc = "")
 	@Permissible("TLDSpells.cast")
 	public void Cast(CommandSource source, CommandArguments args) throws CommandException {
-		
+
 	}
 }
