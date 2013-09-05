@@ -14,8 +14,8 @@ import org.spout.api.exception.CommandException;
 import org.spout.api.geo.discrete.Point;
 import org.spout.vanilla.component.entity.living.Living;
 
+import com.github.thelonedevil.TLDNPC.mobs.NPC;
 import com.github.thelonedevil.TLDScape.TLDScapePlugin;
-import com.github.thelonedevil.TLDScape.Mob.NPC;
 
 /**
  * Provides an example of a class to hold commands.

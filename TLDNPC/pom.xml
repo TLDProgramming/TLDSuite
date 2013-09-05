@@ -9,9 +9,9 @@
 	</parent>
 
 	<!-- Project Details -->
-	<artifactId>TLDScape</artifactId>
+	<artifactId>TLDNPC</artifactId>
 	<version>1.4-SNAPSHOT</version>
-	<name>TLDScape</name>
+	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2013</inceptionYear>
 	<description>Set your description here.</description>
@@ -20,7 +20,6 @@
 		<name>Set your organization name here.</name>
 		<url>http://set.your.url.here</url>
 	</organization>
-
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
@@ -37,7 +36,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<currentYear>2013</currentYear>
 		<buildNumber>0</buildNumber>
-		<mainClass>com.github.thelonedevil.TLDScape.TLDScapePlugin</mainClass>
+		<mainClass>${project.groupId}.${project.artifactId}.${project.artifactId}Plugin</mainClass>
 		<load>startup</load>
 		<!-- The value of this node can be either CLIENT, SERVER, PROXY, or ALL. -->
 		<!-- Unless your server runs on the Spout client, then select SERVER. -->
@@ -62,7 +61,7 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>TLDCommonlib</id>
+			<id>TLDcommonlib</id>
 			<url>http://nexus.justin-wiblin.tk:8081</url>
 		</repository>
 
@@ -93,18 +92,6 @@
 			<version>1.4-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
-		      <dependency>
-            <groupId>com.github.thelonedevil</groupId>
-            <artifactId>TLDNPC</artifactId>
-            <version>1.4-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-                  <dependency>
-            <groupId>com.github.thelonedevil</groupId>
-            <artifactId>TLDSpells</artifactId>
-            <version>1.4-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
 	</dependencies>
 
 	<!-- Builds -->
@@ -133,14 +120,14 @@
 		</resources>
 		<plugins>
 		<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
