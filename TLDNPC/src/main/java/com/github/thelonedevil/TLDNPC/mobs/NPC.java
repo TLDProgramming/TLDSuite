@@ -18,6 +18,15 @@ public class NPC extends Human {
 	}
 
 	private String message = "Hello i am an NPC";
+	private String skin;
+
+	String getSkin() {
+		return skin;
+	}
+
+	void setSkin(String skin) {
+		this.skin = skin;
+	}
 
 	@Override
 	public void onAttached() {
@@ -40,10 +49,9 @@ public class NPC extends Human {
 				break;
 			default:
 				break;
-				
+
 			}
 		}
 	}
-
 
 }

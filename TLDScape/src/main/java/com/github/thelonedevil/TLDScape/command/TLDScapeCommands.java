@@ -8,13 +8,8 @@ import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.command.annotated.Permissible;
-import org.spout.api.entity.Entity;
-import org.spout.api.entity.Player;
 import org.spout.api.exception.CommandException;
-import org.spout.api.geo.discrete.Point;
-import org.spout.vanilla.component.entity.living.Living;
 
-import com.github.thelonedevil.TLDNPC.mobs.NPC;
 import com.github.thelonedevil.TLDScape.TLDScapePlugin;
 
 /**
@@ -31,18 +26,12 @@ public class TLDScapeCommands {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = { "command", "cmd" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@CommandDescription(aliases = { "comand", "cmd" }, desc = "This is an example of what a command might look like. Try it out with /cmd !")
 	@Permissible("TLDScape.some.permission")
-	public void exampleCommand(CommandSource source, CommandArguments args) throws CommandException {
+	public void Spawn(CommandSource source, CommandArguments args) throws CommandException {
 
 		// Calling this command will send whoever issued it the message below.
 		source.sendMessage("The TLDScape plugin command has been successfully issued.");
-		Player player = (Player) source;
-		Point point = player.getPhysics().getPosition();
-		Entity npc = point.getWorld().createEntity(point, NPC.class);
-		Living living = (npc).get(Living.class);
-		((NPC) living).setName("Minescape Guide");
-		player.getWorld().spawnEntity(npc);
 
 	}
 }

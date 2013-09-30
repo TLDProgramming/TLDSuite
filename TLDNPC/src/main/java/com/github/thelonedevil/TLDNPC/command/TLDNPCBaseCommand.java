@@ -26,9 +26,9 @@ public class TLDNPCBaseCommand {
 	/**
 	 * Provides an example command that can be issued to the Spout server.
 	 */
-	@CommandDescription(aliases = {"command", "cmd"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
-	@Permissible("TLDNPC.some.permission")
-	public void exampleBaseCommand(CommandSource source, CommandArguments args) throws CommandException {
+	@CommandDescription(aliases = {"TLDNPC"}, desc = "This is an example of what a command might look like. Try it out with /cmd !")
+	@Permissible("TLDNPC")
+	public void TLDNPC(CommandSource source, CommandArguments args) throws CommandException {
 		
 		// Calling this command will send whoever issued it the message below.
 		source.sendMessage("The TLDNPC plugin base command has been successfully issued. (Type a sub-command)");

@@ -27,7 +27,7 @@ public class TLDNPCPlugin extends Plugin {
 		// Register Base Command (/command)
 		AnnotatedCommandExecutorFactory.create(new TLDNPCBaseCommand(this));
 		// Register Commands under Base Command (/command command)
-		AnnotatedCommandExecutorFactory.create(new TLDNPCCommands(this), getEngine().getCommandManager().getCommand("command"));
+		AnnotatedCommandExecutorFactory.create(new TLDNPCCommands(this), getEngine().getCommandManager().getCommand("TLDNPC"));
 
 		// Register Events
 		getEngine().getEventManager().registerEvents(new TLDNPCListener(this), this);
