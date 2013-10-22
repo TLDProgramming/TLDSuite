@@ -34,7 +34,7 @@ public class PlayerCommands {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		cal1.setTime(now);
-		cal1.add(Calendar.YEAR, -13);
+		cal1.add(Calendar.YEAR, -lib.ageLimit);
 		String dob1 = args.toString();
 		String[] dob2 = dob1.split("/");
 		int yyyy;
