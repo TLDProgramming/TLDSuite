@@ -21,28 +21,38 @@ public class Lib extends Plugin {
 
 	// config
 	public final String configPath = "plugins/TLDCommonLib/config.yml";
+	public File libFolder = new File("plugins/TLDCommonLib/");
 	private YamlConfiguration config;
+	
 	public List<String> Quotes;
 	public String testQuote;
-	public File libFolder = new File("plugins/TLDCommonLib/");
+	
 	public int reserve;
+	public List<String> admins = new ArrayList<String>();
+	public int reserved;
+	
 	public final Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
 	public boolean onjoin = true;
 	public final List<String> onJoin = new ArrayList<String>();
+	
 	public String firstlogin;
 	public String otherlogin;
 	public HashMap<String, Integer> logins = new HashMap<String, Integer>();
+	
 	public HashMap<String, Boolean> afk = new HashMap<String, Boolean>();
+	public long idletime;
+	
 	public int Length;
 	public int amount;
 	public HashMap<String, Boolean> Namount = new HashMap<String, Boolean>();
-	public long idletime;
-	public List<String> admins = new ArrayList<String>();
-	public int reserved;
-	public HashMap<String, String> factions = new HashMap<String, String>();
+	
+	
 	public HashMap<String, Calendar> DOB = new HashMap<String, Calendar>();
 	public HashMap<String, Boolean> allowed = new HashMap<String, Boolean>();
 	public String dateformat;
+	public int ageLimit;
+	
+	public HashMap<String, String> factions = new HashMap<String, String>();
 	public HashMap<String, Integer> factionsclaims = new HashMap<String, Integer>();
 
 	// other

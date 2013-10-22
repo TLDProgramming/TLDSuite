@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>com.github.thelonedevil</groupId>
 		<artifactId>TLDSuite</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 	<distributionManagement>
 		<snapshotRepository>
@@ -48,17 +48,6 @@
 
 	<!-- Repositories -->
 	<repositories>
-
-		<!-- Spout's Maven Repository -->
-		<repository>
-			<id>spout-repo</id>
-			<url>http://nexus.spout.org/content/groups/public</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-
 		<!-- TLD's Maven Repository -->
 		<repository>
 			<id>TLDcommonlib</id>
@@ -70,19 +59,11 @@
 	<!-- Dependencies -->
 	<dependencies>
 
-		<!-- The Spout API -->
-		<dependency>
-			<groupId>org.spout</groupId>
-			<artifactId>spout-api</artifactId>
-			<version>${spoutVersion}</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- TLDCommonlib -->
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDCommonlib</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -150,5 +131,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>1.4-SNAPSHOT</version>
 </project>

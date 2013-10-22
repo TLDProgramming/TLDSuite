@@ -42,3 +42,5 @@ Notes:
     amount: 64
 AFK:
     IdleTime: 5
+DateFormat: DD/MM/YYYY
+AgeLimit: 13

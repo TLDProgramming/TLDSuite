@@ -35,6 +35,11 @@ public class TLDNPCCommands {
 		source.sendMessage("The TLDNPC plugin command has been successfully issued.");
 		Player player = (Player) source;
 		Mob mob = new Mob();
-		mob.spawnNpc(player,"");
+		boolean success = mob.spawnNpc(player,"","Steve","Hello i am an NPC");
+		if(success){
+			source.sendMessage("NPC Spawned");
+		} else{
+			source.sendMessage("NPC Not Spawned");
+		}
 	}
 }

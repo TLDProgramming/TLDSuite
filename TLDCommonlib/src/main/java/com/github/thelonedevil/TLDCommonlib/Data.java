@@ -130,6 +130,9 @@ public class Data {
 		plugin.dateformat = plugin.FetchConfig().getNode("DateFormat").getString("DD/MM/YYYY");
 
 	}
+	public void ageLimit(){
+		plugin.ageLimit = plugin.FetchConfig().getNode("AgeLimit").getInt(13);
+	}
 
 	public void randomQuote() {
 		try {

@@ -1,27 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>TLDRules</artifactId>
-	<version>1.4-SNAPSHOT</version>
 	<name>TLDRules</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2013</inceptionYear>
 	<description>Set your description</description>
-        <parent>  
-  <groupId>com.github.thelonedevil</groupId>
-  <artifactId>TLDSuite</artifactId>
-  <version>1.0-SNAPSHOT</version>
-    </parent>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>release</id>
-            <url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
-        </repository>
-    </distributionManagement>
+	<parent>
+		<groupId>com.github.thelonedevil</groupId>
+		<artifactId>TLDSuite</artifactId>
+		<version>1.5-SNAPSHOT</version>
+	</parent>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>release</id>
+			<url>http://nexus.justin-wiblin.tk:8081/nexus/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
 	<organization>
 		<name>yourgroup</name>
 		<url>http://none.right.now.com</url>
@@ -41,42 +40,41 @@
 	<!-- Dependency repositories -->
 	<repositories>
 		<repository>
-			<id>spout-repo</id>
-			<url>http://nexus.spout.org/content/groups/public</url>
+			<id>sonatype-nexus-releases</id>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 			<snapshots>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
 		<repository>
-    <id>TLDcommonlib</id>
-    <url>http://nexus.justin-wiblin.tk:8081</url>
-    </repository>
+			<id>TLDcommonlib</id>
+			<url>http://nexus.justin-wiblin.tk:8081</url>
+		</repository>
 	</repositories>
-    
+
 	<dependencies>
 		<!-- Provided by third-party -->
+
 		<dependency>
 			<groupId>org.spout</groupId>
-			<artifactId>spout-api</artifactId>
-			<version>${spoutVersion}</version>
+			<artifactId>vanilla</artifactId>
+			<version>${vanillaVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-            <groupId>org.spout</groupId>
-            <artifactId>vanilla</artifactId>
-            <version>1.6.2-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-		<dependency>
-    <groupId>com.github.thelonedevil</groupId>
-    <artifactId>TLDCommonlib</artifactId>
-    <version>1.4-SNAPSHOT</version>
-    <scope>provided</scope>
-    </dependency>
+			<groupId>com.github.thelonedevil</groupId>
+			<artifactId>TLDCommonlib</artifactId>
+			<version>${project.parent.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
-	<finalName>TLDRules</finalName>
+		<finalName>TLDRules</finalName>
 		<defaultGoal>clean install</defaultGoal>
 
 		<!-- Resources to include -->
@@ -101,15 +99,15 @@
 			</resource>
 		</resources>
 		<plugins>
-				<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>

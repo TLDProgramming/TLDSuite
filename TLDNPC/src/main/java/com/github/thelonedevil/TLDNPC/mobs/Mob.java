@@ -7,12 +7,15 @@ import org.spout.vanilla.component.entity.living.Living;
 
 public class Mob {
 
-	public void spawnNpc(Player player, String skin){
+	public boolean spawnNpc(Player player, String skin, String name, String message){
 		Point point = player.getPhysics().getPosition();
 		Entity npc = point.getWorld().createEntity(point, NPC.class);
 		Living living = npc.get(Living.class);
-		((NPC) living).setName("Default NPC");
-		((NPC)npc).setSkin(skin);
+		((NPC) living).setName(name);
+		((NPC) npc).setSkin(skin);
+		((NPC)npc).setMessage(message);
 		player.getWorld().spawnEntity(npc);
+		return npc.isSpawned();
+
 	}
 }

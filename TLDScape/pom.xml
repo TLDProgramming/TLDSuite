@@ -5,12 +5,11 @@
 	<parent>
 		<artifactId>TLDSuite</artifactId>
 		<groupId>com.github.thelonedevil</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 
 	<!-- Project Details -->
 	<artifactId>TLDScape</artifactId>
-	<version>1.4-SNAPSHOT</version>
 	<name>TLDScape</name>
 	<url>http://maven.apache.org</url>
 	<inceptionYear>2013</inceptionYear>
@@ -42,25 +41,30 @@
 		<!-- The value of this node can be either CLIENT, SERVER, PROXY, or ALL. -->
 		<!-- Unless your server runs on the Spout client, then select SERVER. -->
 		<platform>SERVER</platform>
-		<spoutVersion>1.0.0-SNAPSHOT</spoutVersion>
+
 		<!-- add plugin dependancies in the format of Vanilla,Test -->
 		<!-- Do not add the [] around the dependancies here, that is handled at 
 			compile -->
 		<depends>Vanilla</depends>
-		<vanillaVersion>1.6.2-SNAPSHOT</vanillaVersion>
+
 	</properties>
 
 	<!-- Repositories -->
 	<repositories>
 
 		<!-- Spout's Maven Repository -->
-		<repository>
-			<id>spout-repo</id>
-			<url>http://nexus.spout.org/content/groups/public</url>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
+        <repository>
+            <id>sonatype-nexus-releases</id>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
 		<repository>
 			<id>TLDCommonlib</id>
 			<url>http://nexus.justin-wiblin.tk:8081</url>
@@ -71,13 +75,6 @@
 	<!-- Dependencies -->
 	<dependencies>
 
-		<!-- The Spout API -->
-		<dependency>
-			<groupId>org.spout</groupId>
-			<artifactId>spout-api</artifactId>
-			<version>${spoutVersion}</version>
-			<scope>provided</scope>
-		</dependency>
 
 		<!-- The Vanilla Plugin -->
 		<dependency>
@@ -90,19 +87,19 @@
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDCommonlib</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		      <dependency>
             <groupId>com.github.thelonedevil</groupId>
             <artifactId>TLDNPC</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
             <scope>provided</scope>
         </dependency>
                   <dependency>
             <groupId>com.github.thelonedevil</groupId>
             <artifactId>TLDSpells</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
             <scope>provided</scope>
         </dependency>
 	</dependencies>

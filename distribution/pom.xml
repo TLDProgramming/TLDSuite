@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.thelonedevil</groupId>
 		<artifactId>TLDSuite</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>distribution</artifactId>
 
@@ -22,57 +22,62 @@
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDWelcomer</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDRules</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDQuotes</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDFactions</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDAfk</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDReserve</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDNotes</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDCommonlib</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
-                <dependency>
+		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDAgeChecker</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDScape</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.thelonedevil</groupId>
 			<artifactId>TLDSpells</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.thelonedevil</groupId>
+			<artifactId>TLDNPC</artifactId>
+			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
 

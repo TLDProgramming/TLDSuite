@@ -17,8 +17,16 @@ public class NPC extends Human {
 		this.plugin = instance;
 	}
 
-	private String message = "Hello i am an NPC";
+	private String message = "";
 	private String skin;
+
+	String getMessage() {
+		return message;
+	}
+
+	void setMessage(String message) {
+		this.message = message;
+	}
 
 	String getSkin() {
 		return skin;

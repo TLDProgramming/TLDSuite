@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>com.github.thelonedevil</groupId>
 		<artifactId>TLDSuite</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 	<distributionManagement>
 		<snapshotRepository>
@@ -39,25 +39,16 @@
 		<!-- The value of this node can be either CLIENT, SERVER, PROXY, or ALL. -->
 		<!-- Unless your server runs on the Spout client, then select SERVER. -->
 		<platform>SERVER</platform>
-		<spoutVersion>1.0.0-SNAPSHOT</spoutVersion>
+
 		<!-- add plugin dependancies in the format of Vanilla,Test -->
 		<!-- Do not add the [] around the dependancies here, that is handled at 
 			compile -->
-		<vanillaVersion>1.6.2-SNAPSHOT</vanillaVersion>
+
 	</properties>
 
 	<!-- Repositories -->
 	<repositories>
 
-		<!-- Spout's Maven Repository -->
-		<repository>
-			<id>spout-repo</id>
-			<url>http://nexus.spout.org/content/groups/public</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
 
 		<repository>
 			<id>TLDcommonlib</id>
@@ -70,12 +61,6 @@
 	<dependencies>
 
 		<!-- The Spout API -->
-		<dependency>
-			<groupId>org.spout</groupId>
-			<artifactId>spout-api</artifactId>
-			<version>${spoutVersion}</version>
-			<scope>provided</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.xerial</groupId>
@@ -172,5 +157,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>1.4-SNAPSHOT</version>
 </project>
