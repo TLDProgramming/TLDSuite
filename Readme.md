@@ -72,7 +72,7 @@ To use in your own plugin devlopment add this to your pom.xml
         <dependency>
             <groupId>com.github.thelonedevil</groupId>
             <artifactId>TLDCommonlib</artifactId>
-            <version>1.3-SNAPSHOT</version>
+            <version>1.5-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
